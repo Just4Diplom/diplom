@@ -1,0 +1,63 @@
+﻿
+@model itransition_project.Models.Comix
+@{
+    ViewBag.Title = "Comix";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="myApp">
+    @*@Model.Author.UserName*@
+    @*<div ng-controller="viewController" ng-init="setId(@Model.Id)">*@
+        <div class="form-horizontal" ng-cloak>
+            <br />
+            <h1>@Model.Name</h1>
+            @*<p>
+                <a href="../../View/ByCategory/@Model.Category">@Model.Category</a>
+            </p>*@
+            <p>
+                <span>
+                    @*@foreach (var tag in Model.Tags)
+                    {
+                        <a href="../../View/ByTag/@tag.TagName" class="label label-primary">@tag.TagName</a>
+                    }*@
+                </span>
+            </p>
+            <p>
+                <div style="max-width: 130px" class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vote(false)" onclick="this.blur();"
+                                ng-disabled="!@User.Identity.IsAuthenticated.ToString().ToLower()">
+                            <span class="glyphicon glyphicon-minus" ng-class="{red: !isPositive && isRateSet}"></span>
+                        </button>
+                    </span>
+                    <input type="text" class="form-control input-number text-center" ng-disabled="true" value="{{rating}}">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vote(true)" onclick="this.blur();"
+                                ng-disabled="!@User.Identity.IsAuthenticated.ToString().ToLower()">
+                            <span class="glyphicon glyphicon-plus" ng-class="{green: isPositive && isRateSet}"></span>
+                        </button>
+                    </span>
+                </div>
+            </p>
+            <p>
+                <span class="glyphicon glyphicon-user"></span> <a @*href="../../AccountUser/User/@Model.Username"*@>@Model.Author.UserName</a>
+            </p>
+            <p>
+                <span class="glyphicon glyphicon-time"></span> @*@Model.CreateTime*@
+            </p>
+            @*@{Html.RenderPartial(@Model.Template.TemplateRender);}*@
+        </div>
+        <br />
+        @*@if (Model.UserName == User.Identity.Name || User.IsInRole("admin"))
+            {
+            <div class="well">
+                <button class="btn btn-default" ng-click="editEntry()">Edit</button>
+                <button class="btn btn-danger" ng-click="deleteEntry()">Delete</button>
+            </div>
+        }*@
+    </div>
+
+    
+    @*</div>*@
+</div>
+

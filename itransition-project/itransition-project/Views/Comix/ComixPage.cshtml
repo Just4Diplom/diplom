@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+<dragable ng-controller="switchTemplateController">
+    <select ng-model="selection" ng-options="item for item in items" class="dropdown-header"></select>
+    <br />
+    <button ng-click="remove($event)" class="btn btn-default btn-sm">Remove</button>
+    <hr/>
+    <div id="template_switch" style="height:800px" ng-switch on="selection">
+        <div ng-view ng-switch-when="skew">
+            @Html.Partial("~/Views/Templates/Skew.cshtml")
+        </div>
+        <div ng-switch-when="triad">
+            @Html.Partial("~/Views/Templates/Triad.cshtml")
+        </div>
+        <div ng-switch-when="tetrad">
+            @Html.Partial("~/Views/Templates/Tetrad.cshtml")
+        </div>
+    </div>
+    @*@section scripts{
+        @Scripts.Render("~/bundles/jqueryui")
+    }*@
+</dragable>

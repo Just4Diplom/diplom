@@ -1,0 +1,9 @@
+﻿@model IEnumerable<itransition_project.Models.Profile>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@Html.ActionLink(@item.User.UserName, "EditDetails", "Admin", new { id = @item.User.UserName }, null)</h3>
+        <p>@item.User.Email</p>
+    </div>
+}

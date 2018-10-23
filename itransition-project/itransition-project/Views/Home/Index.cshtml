@@ -1,0 +1,50 @@
+﻿@model List<itransition_project.Models.Comix>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+<br/>
+<div class="container">
+    <div class="col-md-8">
+        <h2 class="row">@Resources.Resource.Latest</h2>
+        @foreach (var comix in Model)
+            {
+            <h4 class="row">
+                @Html.ActionLink(@comix.Name ?? "*UNNAMED*", "ViewComix", "Comix", new { Id = @comix.Id }, null)
+            </h4>
+                <div class="row">
+                    @foreach (var tag in comix.Tags)
+                    {
+                        @Html.ActionLink(tag.Text, "SearchByTag", "Search", new { id = tag.Text }, new {@class = "label label-primary" })
+                    }
+                </div>
+                <h6 class="row">@Html.ActionLink(comix.Author.UserName, "UserInfo", "User", new { id = comix.Author.UserName }, null), @comix.CreationTime.ToString()</h6>
+                <h6 class="row">@Resources.Resource.Rating : @comix.RatingValue</h6>
+                <hr />
+        }
+    </div>
+    <div class="col-md-4">
+        @using (@Html.BeginForm("Index", "Search", FormMethod.Get))
+        {
+            @Html.Editor("id", new {htmlAttributes = new {@class = "form-control"}});
+        }
+        <div class="hline"></div>
+        <div class="dataBoxContent">
+        </div>
+        <div class="hline"></div>
+        <div ng-app="tagCloud" class="row">
+            <div id="keyword_cloud" ng-controller="tagCloudCtrl">
+                <div class="dataBoxContent">
+                    <span ng-cloak ng-repeat="word in words">
+        <a href="../../Search/SearchByTag/{{word.TagName}}" class="cloud_{{ word.Weight }}">{{ word.TagName }}</a> 
+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/tagCloud")
+}
+

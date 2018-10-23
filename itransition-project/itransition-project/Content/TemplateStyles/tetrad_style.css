@@ -1,0 +1,68 @@
+#comic_wrapper_tetrad {
+    margin: auto;
+	width: 680px;
+	height: 680px;
+	background: white;
+    border: solid 1px black;
+}
+
+#comic_wrapper_tetrad .frame, #comic_wrapper_tetrad .inner-frame, #comic_wrapper_tetrad .frame-image {
+	width: 325px;
+	height: 415px;
+}
+
+#comic_wrapper_tetrad .frame {
+	left: 10px;
+	background: transparent;
+	position: relative;
+	overflow: hidden;
+}
+
+#comic_wrapper_tetrad #first_frame {
+	top: -80px;
+}
+
+#comic_wrapper_tetrad #second_frame {
+	top: -495px;
+	left: 345px;
+}
+
+#comic_wrapper_tetrad #third_frame {
+	top: -485px;
+}
+
+#comic_wrapper_tetrad #fourth_frame {
+	top: -900px;
+	left: 345px;
+}
+
+#comic_wrapper_tetrad .inner-frame {
+	background: #AAAAAA;
+	position: relative;
+	overflow: hidden;
+}
+
+#comic_wrapper_tetrad #first_inner_frame {
+	top: 90px;
+}
+
+#comic_wrapper_tetrad #second_inner_frame {
+	top: 90px;
+}
+
+#comic_wrapper_tetrad #third_inner_frame {
+	top: -90px;
+}
+
+#comic_wrapper_tetrad #fourth_inner_frame {
+	top: -90px;
+}
+
+#comic_wrapper_tetrad .frame-image {
+	display: block;
+	border: 0;
+  	background-size: cover;
+  	position: relative;
+    background-size: cover;
+    background: #333333;
+}

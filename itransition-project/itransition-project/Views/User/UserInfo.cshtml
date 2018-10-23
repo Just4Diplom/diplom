@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNet.Identity
+@using Resources
+@model itransition_project.Models.UserInfoViewModel
+<br />
+@{ 
+    ViewBag.Title = Model.Profile.UserName;
+}
+@if (User.IsInRole("admin"))
+{
+    @Html.ActionLink("Edit Details", "EditDetails", "Admin", new { id = @Model.Profile.UserName }, null)
+}
+
+<div class="col-md-3">
+    <h2 id="UserName">@Model.Profile.UserName</h2>
+    <div class="panel-default">
+        <div class="panel-heading text-center">
+            <img class="avatar-cropped-small" src="@Model.Profile.Profile.Photo" width="200" height="200"/>
+        </div>
+        <div class="panel-body list-group">
+            <div class="list-group-item">
+                <label class="glyphicon glyphicon-comment"></label>
+                <span class="pull-right">@Model.Profile.Profile.About</span>
+            </div>
+        </div>
+    </div>
+    <h3>@Resources.Resource.Medal</h3>
+    @foreach (var item in Model.Medals)
+    {
+        <img src="@item.Image" title="@item.Name" width="50" height="50"/>
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        using (Html.BeginForm("UserInfo", "User", FormMethod.Post))
+        {
+            @Html.LabelFor(model => model.Comments.First().Text, @Resources.Resource.Comments)
+            <textarea class="form-control" rows="3" type="text" name="text" id="text" placeholder="Text input"></textarea>
+            @Html.Hidden("userId", Model.Profile.Profile.User.Id)
+            <br />
+            <input type="submit" class="btn btn-default" value="@Resources.Resource.Add"/>
+        }
+    }
+    <br />
+    <div ng-app="">
+        @foreach (var item in Model.Comments)
+        {
+            <div class="row comment-list-container">
+                <div class="col-xs-4">
+                    <a href="../../User/UserInfo/@item.Author.UserName"><img ng-src="@item.Author.Profile.Photo" class="img-circle img-responsive" width="150" height="150"></a><span>@item.Author.UserName</span>
+                </div>
+                <div class="col-xs-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @item.Text<br>
+                            <div class="pull-right">
+                                @if (item.Author.UserName == User.Identity.GetUserName() || User.IsInRole("admin"))
+                                {
+                                    <button type="button" class="btn btn-xs btn-default" onclick="DelComment(@item.Id)" data-id="@item.Id"><span class="glyphicon glyphicon-remove"></span></button>
+                                }
+                            </div>
+
+                            <span class="label label-info">@item.Time</span>
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="col-md-7">
+    <div class="panel-default">
+        <h3 class="panel-heading text-center">Comixes</h3>
+        <div class="panel-body list-group">
+            @foreach (var comix in Model.Comixes)
+            {
+                <div class="comix-list-container">
+                    <h4 class="row">
+                        @Html.ActionLink(@comix.Name ?? "*UNNAMED*", "ViewComix", "Comix", new { Id = @comix.Id }, null)
+                        @if (comix.Author.UserName == User.Identity.GetUserName() || User.IsInRole("admin"))
+                        {
+                            <button type="button" class="btn btn-xs btn-default" onclick="DelComix(@comix.Id)" data-id="@comix.Id"><span class="glyphicon glyphicon-remove"></span></button>
+                        }
+                    </h4>
+                    <div class="row">
+                        @foreach (var tag in comix.Tags)
+                        {
+                            @*<a class="label label-primary">@tag.Text</a>*@
+                            @Html.ActionLink(tag.Text, "SearchByTag", "Search", new { id = tag.Text }, new { @class = "label label-primary" })
+                        }
+                    </div>
+                    <h6 class="row">@Html.ActionLink(comix.Author.UserName, "UserInfo", "User", new { id = comix.Author.UserName }, null), @comix.CreationTime.ToString()</h6>
+                    <h6 class="row">@Resources.Resource.Rating : @comix.RatingValue</h6>
+                    <hr />
+                </div>
+            }
+        </div>
+    </div>
+</div>

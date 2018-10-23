@@ -1,0 +1,2 @@
+﻿DELETE FROM Medals
+DELETE FROM Comments

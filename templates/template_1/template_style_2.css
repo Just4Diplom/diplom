@@ -1,0 +1,93 @@
+body {
+	background: #CCCCCC;
+}
+
+#comic_wrapper {
+	margin: 10% auto;
+	width: 680px;
+	height: 680px;
+	background: #AAAAAA;
+}
+
+/*.frame, .inner-frame, .frame-image {
+	width: 660px;
+	height: 415px;
+}*/
+
+.frame {
+	left: 10px;
+	background: transparent;
+	position: relative;
+	overflow: hidden;
+}
+
+#first_frame {
+	top: -80px;
+	width: 660px;
+	height: 415px;
+}
+
+#second_frame {
+	top: -70px;
+	width: 325px;
+	height: 415px;
+}
+
+#third_frame {
+	top: -485px;
+	left: 345px;
+	width: 325px;
+	height: 415px;
+}
+
+.inner-frame {
+	background: #FFFFFF;
+	position: relative;
+	overflow: hidden;
+}
+
+#first_inner_frame {
+	top: 90px;
+	width: 660px;
+	height: 415px;
+}
+
+#second_inner_frame {
+	top: -90px;
+	width: 325px;
+	height: 415px;
+}
+
+#third_inner_frame {
+	top: -90px;
+	width: 325px;
+	height: 415px;
+}
+
+.frame-image {
+	display: block;
+	border: 0;
+  	background-size: cover;
+  	position: relative;
+}
+
+#first_frame_image {
+  	background: url('http://lorempixel.com/1000/1000/');
+  	background-size: cover;
+  	width: 660px;
+	height: 415px;
+}
+
+#second_frame_image {
+  	background: url('http://lorempixel.com/500/700/');
+  	background-size: cover;
+  	width: 325px;
+	height: 415px;
+}
+
+#third_frame_image {
+  	background: url('http://lorempixel.com/700/500/');
+  	background-size: cover;
+  	width: 325px;
+	height: 415px;
+}

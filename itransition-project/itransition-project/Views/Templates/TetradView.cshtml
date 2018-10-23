@@ -1,0 +1,73 @@
+﻿@model itransition_project.Models.JsonPagesViewModel
+<link href="~/Content/TemplateStyles/tetrad_style.css" rel="stylesheet" />
+
+<div id="comic_wrapper_tetrad">
+    <div id="first_frame" class="frame">
+        <div id="first_inner_frame" class="inner-frame">
+            @{var firstFrame = Model.FrameImages[0];}
+            <div id="first_frame_image" class="frame-image"
+                 style="background-image:@firstFrame.BackgroundImage;
+                 top: @firstFrame.Top;
+                 left: @firstFrame.Left;
+                 width: @firstFrame.Width;
+                 height: @firstFrame.Height;
+                 background-size: cover;">
+                @foreach(var balloon in firstFrame.Balloons)
+                {
+                    @Html.Partial("~/Views/Templates/BalloonView.cshtml", balloon)
+                }
+            </div>
+        </div>
+    </div>
+    <div id="second_frame" class="frame">
+        <div id="second_inner_frame" class="inner-frame">
+            @{var secondFrame = Model.FrameImages[1];}
+            <div id="second_frame_image" class="frame-image"
+                 style="background-image:@secondFrame.BackgroundImage;
+                 top: @secondFrame.Top;
+                 left: @secondFrame.Left;
+                 width: @secondFrame.Width;
+                 height: @secondFrame.Height;
+                 background-size: cover;">
+                @foreach (var balloon in secondFrame.Balloons)
+                {
+                    @Html.Partial("~/Views/Templates/BalloonView.cshtml", balloon)
+                }
+            </div>
+        </div>
+    </div>
+    <div id="third_frame" class="frame">
+        <div id="third_inner_frame" class="inner-frame">
+            @{var thirdFrame = Model.FrameImages[2];}
+            <div id="third_frame_image" class="frame-image"
+                 style="background-image:@thirdFrame.BackgroundImage;
+                 top: @thirdFrame.Top;
+                 left: @thirdFrame.Left;
+                 width: @thirdFrame.Width;
+                 height: @thirdFrame.Height;
+                 background-size: cover;">
+                @foreach (var balloon in thirdFrame.Balloons)
+                {
+                    @Html.Partial("~/Views/Templates/BalloonView.cshtml", balloon)
+                }
+            </div>
+        </div>
+    </div>
+    <div id="fourth_frame" class="frame">
+        <div id="fourth_inner_frame" class="inner-frame">
+            @{var fourthFrame = Model.FrameImages[3];}
+            <div id="fourth_frame_image" class="frame-image"
+                 style="background-image:@fourthFrame.BackgroundImage;
+                 top: @fourthFrame.Top;
+                 left: @fourthFrame.Left;
+                 width: @fourthFrame.Width;
+                 height: @fourthFrame.Height;
+                 background-size: cover;">
+                @foreach (var balloon in fourthFrame.Balloons)
+                {
+                    @Html.Partial("~/Views/Templates/BalloonView.cshtml", balloon)
+                }
+            </div>
+        </div>
+    </div>
+</div>

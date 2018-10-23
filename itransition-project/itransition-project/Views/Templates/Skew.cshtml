@@ -1,0 +1,32 @@
+﻿<link href="~/Content/themes/base/all.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/TemplateStyles/skew_style.css" rel="stylesheet" />
+
+<div id="comic_wrapper_skew">
+    <div id="first_frame" class="frame" ng-controller="dragndrop">
+        <div id="first_inner_frame" class="inner-frame"
+             file-dropzone="[image/png, image/jpeg, image/gif]"
+             file="image" file-name="imageFileName" data-max-file-size="3">
+            <div id="first_frame_image" class="frame-image ui-widget-content"            
+                 style="background-image:url({{image}}); background-size: cover;">
+            </div>
+        </div>
+    </div>
+    <div id="second_frame" class="frame" ng-controller="dragndrop">
+        <div id="second_inner_frame" class="inner-frame"
+             file-dropzone="[image/png, image/jpeg, image/gif]"
+             file="image" file-name="imageFileName" data-max-file-size="3">
+            <div id="second_frame_image" class="frame-image ui-widget-content"
+                 style="background-image:url({{image}}); background-size: cover;">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    make_it_draggable();
+</script>
+    
+
+
+    
+    
+

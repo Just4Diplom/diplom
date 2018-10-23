@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "AddComix";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/balloons")
+@Styles.Render("~/Content/ng-tags-input")
+<h2>AddComix</h2>
+
+<div class="container" ng-app="ComixAdd">
+    <div id="pages" ng-controller="pagesController">
+        <div class="row form-group">
+            <label class="col-md-2 control-label" for="Name">Name</label>
+            <div class="col-md-4">
+                <input class="form-control" data-val="true" data-val-required="Требуется поле Name." id="Name" name="Name" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <tags-input max-length="15" max-tags="10" ng-model="tags" required>
+                    <auto-complete source="loadTags($query)"></auto-complete>
+                </tags-input>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="controls col-md-6">
+                <button ng-click="add()" class="btn btn-default btn-sm">Add Page</button>
+                <button ng-click="save()" class="btn btn-default btn-sm">Save</button>
+            </div>
+        </div>
+        <hr/>
+        <comix-manager></comix-manager>
+    </div>
+    <div id="balloons_panel">
+        <div class="talkbubble">
+            <a class="delete-cross"></a>
+            <p>
+                <textarea>Text</textarea>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/template")
+    @Scripts.Render("~/bundles/AddComix")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/ng-tags-input")
+}
+

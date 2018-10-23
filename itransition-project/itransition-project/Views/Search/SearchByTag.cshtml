@@ -1,0 +1,21 @@
+﻿@using itransition_project.Models
+@model IEnumerable<Comix>
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <h1 class="page-header">
+            @Model.Count() постов найдено
+        </h1>
+    </div>
+
+    @{ foreach (Comix en in @Model)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ActionLink(@en.Name + @en.Author?.UserName, "ViewComix", "Comix", new { Id = @en.Id }, null)
+                </div>
+            </div>
+            <hr>
+        }
+    }
+</div>

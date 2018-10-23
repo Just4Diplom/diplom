@@ -1,0 +1,57 @@
+﻿@model itransition_project.Models.JsonReturnComixViewModel
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="row">@Model.Name</h2>
+<h6 class="row">@Html.ActionLink(@Model.Author.UserName, "UserInfo", "User", new { id = Model.Author.UserName }, null), @Model.CreationTime.ToString()</h6>
+<div class="row">
+    @foreach (var tag in Model.Tags)
+    {
+        <a class="label label-primary">@tag.text</a>
+        @Html.ActionLink(tag.text, "SearchByTag", "Search", new { id = tag.text }, new { @class = "label label-primary" })
+    }
+</div>
+<br/>
+<div class="row" ng-app="Like">
+    <div ng-controller="LikeController" ng-init="setId(@Model.Id)">
+        <div style="max-width: 150px" class="input-group">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vote(false)" onclick="this.blur();"
+                        ng-disabled="!@User.Identity.IsAuthenticated.ToString().ToLower()">
+                    <span class="glyphicon glyphicon-minus" ng-class="{red: !isPositive && isRateSet}"></span>
+                </button>
+            </span>
+            <input type="text" class="form-control input-number text-center" ng-disabled="true" value="{{rating}}">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vote(true)" onclick="this.blur();"
+                        ng-disabled="!@User.Identity.IsAuthenticated.ToString().ToLower()">
+                    <span class="glyphicon glyphicon-plus" ng-class="{green: isPositive && isRateSet}"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div id="pages">
+        @foreach (var page in Model.Pages)
+        {
+            switch (page.Template)
+            {
+                case "skew":
+                    @Html.Partial("~/Views/Templates/SkewView.cshtml", page)
+                    break;
+                case "triad":
+                    @Html.Partial("~/Views/Templates/TriadView.cshtml", page)
+                    break;
+                case "tetrad":
+                    @Html.Partial("~/Views/Templates/TetradView.cshtml", page)
+                    break;
+            }
+        }
+    </div>
+</div>
+@section scripts{
+                @Scripts.Render("~/bundles/LikeAndDislike")
+    }

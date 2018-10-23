@@ -1,0 +1,18 @@
+﻿@model List<itransition_project.Models.Comix>
+    <h2 class="row">@Resources.Resource.Latest</h2>
+    @foreach (var comix in Model)
+            {
+        
+            <h4 class="row">
+                @Html.ActionLink(@comix.Name ?? "*UNNAMED*", "ViewComix", "Comix", new { Id = @comix.Id }, null)
+            </h4>
+            <div class="row">
+                @foreach (var tag in comix.Tags)
+                {
+                    @Html.ActionLink(tag.Text, "SearchByTag", "Search", new { id = tag.Text }, new { @class = "label label-primary" })
+                }
+            </div>
+            <h6 class="row">@Html.ActionLink(comix.Author.UserName, "UserInfo", "User", new { id = comix.Author.UserName }, null), @comix.CreationTime.ToString()</h6>
+            <h6 class="row">@Resources.Resource.Rating : @comix.RatingValue</h6>
+            <hr />
+    }

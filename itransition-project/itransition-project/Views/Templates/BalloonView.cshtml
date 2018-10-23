@@ -1,0 +1,13 @@
+﻿@model itransition_project.Models.JsonBalloonsViewModel
+@Styles.Render("~/Content/balloons")
+
+<div class="talkbubble"
+     style="top: @Model.Top;
+     left: @Model.Left;
+     width: @Model.Width;
+     height: @Model.Height;">
+    <p style="color: black;">
+        <textarea readonly style="font-size:0.8em">@Model.Text</textarea>
+    </p>
+</div>
+

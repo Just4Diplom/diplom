@@ -1,0 +1,52 @@
+#comic_wrapper_skew {
+	margin: auto;
+	width: 680px;
+	height: 680px;
+	background: white;
+    border: solid 1px black;
+}
+
+#comic_wrapper_skew .frame, #comic_wrapper_skew .inner-frame, #comic_wrapper_skew .frame-image {
+	width: 660px;
+	height: 415px;
+}
+
+#comic_wrapper_skew .frame {
+	left: 10px;
+	transform: skewY(-15deg);
+	background: transparent;
+	position: relative;
+	overflow: hidden;
+}
+
+#comic_wrapper_skew #first_frame {
+	top: -80px;
+}
+
+#comic_wrapper_skew #second_frame {
+	top: -70px;
+}
+
+#comic_wrapper_skew .inner-frame {
+	transform: skewY(15deg);
+	background: #AAAAAA;
+	position: relative;
+	overflow: hidden;
+}
+
+#comic_wrapper_skew #first_inner_frame {
+	top: 90px;
+}
+
+#comic_wrapper_skew #second_inner_frame {
+	top: -90px;
+}
+
+#comic_wrapper_skew .frame-image {
+	display: block;
+	border: 0;
+  	background-size: cover;
+  	position: relative;
+    background-size: cover;
+    background: #333333;
+}

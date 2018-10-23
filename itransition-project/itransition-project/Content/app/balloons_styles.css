@@ -1,0 +1,85 @@
+﻿#balloons_panel {
+    position: fixed;
+    right: 20px;
+    top: 42%;
+    height: 450px;
+    width: 200px;
+    background: transparent;
+}
+
+.talkbubble {
+  position: relative;
+  min-width: 150px;
+  min-height: 62px;
+  width: 150px;
+  height: 62px;
+  margin: 0;
+  
+  padding: 10px;
+  border-radius: 5px;
+  border: solid #eeeeee;
+  background: #eeeeee;
+}
+
+.talkbubble:before {
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  width: 0;
+  height: 0;
+  
+  border-top: 13px solid transparent;
+  border-right: 26px solid #eeeeee;
+  border-bottom: 13px solid transparent;
+}
+
+.talkbubble textarea {
+  position: inherit;
+  width: inherit;
+  height: inherit;
+  background: inherit;
+  
+  margin: 0;
+  padding: 0;
+  right: 5px;
+
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;  
+  
+  border: none;
+  resize: none;
+  font-size: 0.8em;
+}
+
+.talkbubble p {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;  
+}
+
+.delete-cross {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  opacity: 0.3;
+}
+.delete-cross:hover {
+  opacity: 1;
+}
+.delete-cross:before, .delete-cross:after {
+  position: absolute;
+  content: ' ';
+  height: 10px;
+  width: 2px;
+  background-color: #333;
+}
+.delete-cross:before {
+  transform: rotate(45deg);
+}
+.delete-cross:after {
+  transform: rotate(-45deg);
+}

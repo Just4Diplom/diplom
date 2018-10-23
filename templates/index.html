@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body style="background: grey;">
+
+<svg style="background: white;" width="500" height="500">
+	<defs>
+    <pattern id='img1' width="1" height="1" viewBox="0 0 480 300" preserveAspectRatio="none">
+      <image xlink:href='http://lorempixel.com/700/500/' x="0" y="0" width="480" height="300" preserveAspectRatio="xMidYMid slice"></image>
+    </pattern>
+
+    <pattern id='img2' width="1" height="1" viewBox="0 0 480 300" preserveAspectRatio="none">
+      <image xlink:href='http://lorempixel.com/500/1000/' x="0" y="0" width="480" height="300" preserveAspectRatio="xMidYMid slice"></image>
+    </pattern>
+  </defs>
+	<path fill="url(#img1)" d="M10 300 L10 10 L490 10 L490 200 Z" />
+	<path fill="url(#img2)" d="M490 210 L490 490 L10 490 L10 310 Z" />
+</svg>
+
+<svg style="background: white;" width="500" height="500">
+  <defs>
+    <pattern id='img3' width="1" height="1" viewBox="0 0 480 250" preserveAspectRatio="none">
+      <image xlink:href='http://lorempixel.com/700/500/' x="0" y="0" width="480" height="250" preserveAspectRatio="xMidYMid slice"></image>
+    </pattern>
+
+    <pattern id='img4' width="1" height="1" viewBox="0 0 250 250" preserveAspectRatio="none">
+      <image xlink:href='http://lorempixel.com/300/300/' x="0" y="0" width="250" height="250" preserveAspectRatio="xMidYMid slice"></image>
+    </pattern>
+
+    <pattern id='img5' width="1" height="1" viewBox="0 0 250 250" preserveAspectRatio="none">
+      <image xlink:href='http://lorempixel.com/250/400/' x="0" y="0" width="250" height="250" preserveAspectRatio="xMidYMid slice"></image>
+    </pattern>
+  </defs>
+  <path fill="url(#img3)" d="M10 250 L10 10 L490 10 L490 250 Z" />
+  <path fill="url(#img4)" d="M10 260 L250 260 L250 490 L10 490 Z" />
+  <path fill="url(#img5)" d="M260 260 L490 260 L490 490 L260 490 Z" />
+</svg>
+
+
+</body>
+</html>

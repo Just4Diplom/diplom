@@ -1,0 +1,81 @@
+#comic_wrapper_triad {
+	margin: auto;
+	width: 680px;
+	height: 680px;
+	background: white;
+    border: solid 1px black;
+}
+
+#comic_wrapper_triad .frame {
+	left: 10px;
+	background: transparent;
+	position: relative;
+	overflow: hidden;
+}
+
+#comic_wrapper_triad #first_frame {
+	top: -80px;
+	width: 660px;
+	height: 415px;
+}
+
+#comic_wrapper_triad #second_frame {
+	top: -70px;
+	width: 325px;
+	height: 415px;
+}
+
+#comic_wrapper_triad #third_frame {
+	top: -485px;
+	left: 345px;
+	width: 325px;
+	height: 415px;
+}
+
+#comic_wrapper_triad .inner-frame {
+	background: #AAAAAA;
+	position: relative;
+	overflow: hidden;
+}
+
+#comic_wrapper_triad #first_inner_frame {
+	top: 90px;
+	width: 660px;
+	height: 415px;
+}
+
+#comic_wrapper_triad #second_inner_frame {
+	top: -90px;
+	width: 325px;
+	height: 415px;
+}
+
+#comic_wrapper_triad #third_inner_frame {
+	top: -90px;
+	width: 325px;
+	height: 415px;
+}
+
+#comic_wrapper_triad .frame-image {
+	display: block;
+	border: 0;
+  	background-size: cover;
+  	position: relative;
+    background-size: cover;
+    background: #333333;
+}
+
+#comic_wrapper_triad #first_frame_image {
+  	width: 660px;
+	height: 415px;
+}
+
+#comic_wrapper_triad #second_frame_image {
+  	width: 325px;
+	height: 415px;
+}
+
+#comic_wrapper_triad #third_frame_image {
+  	width: 325px;
+	height: 415px;
+}
