@@ -1,0 +1,215 @@
+﻿@{
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta property="vk:app_id" content="2694307">
+    <meta property="fb:admins" content="1341124907">
+    <meta property="og:title" content="Создать комикс | Генератор комиксов">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://1001mem.ru/create_comics">
+    <meta property="og:site_name" content="1001 Мем">
+    <meta property="og:image" content="http://s.1001mem.ru//images/apple-touch-icon-114x114.png">
+
+    <!--<link rel="image_src" href="http://s.1001mem.ru//images/75x75.png" />-->
+
+    <title>Создать комикс | Генератор комиксов</title>
+    <meta name="description" content="Генератор комиксов, который позволяет создать комикс, сохранить его и опубликовать на сайте">
+    <meta name="keywords" content="Создать комикс, Генератор комиксов, создать комикс fffuuu, создать комикс онлайн">
+
+    <!-- Styles -->
+    <link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet" media="all">
+    <link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link type="text/css" href="http://s.1001mem.ru/stylesheets/style.css?115561" rel="stylesheet" media="all">
+    <link type="text/css" href="http://s.1001mem.ru/ragemaker/jquery-ui-1.8.17.custom.css?115561" rel="stylesheet" media="all">
+    <link type="text/css" href="http://s.1001mem.ru/ragemaker/ragemaker.css?115561" rel="stylesheet" media="all">
+
+    <!-- Javascript -->
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/javascripts/funposts.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/javascripts/mem.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/jquery.ui-1.8.17.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/rotate.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/ajaxfileupload.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/shortcut.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/taexpander.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/farbtastic.js?115561"></script>
+
+    <!-- Fav and Touch icons -->
+    <link rel="shortcut icon" href="http://s.1001mem.ru/images/favicon.ico" type="image/png">
+    <link rel="apple-touch-icon" href="http://s.1001mem.ru/images/apple-touch-icon-114x114.png">
+
+    <script type="text/javascript">
+		FunPosts.is_logged = false;
+
+    </script>
+    <script src="~/Scripts/comix/ragemaker.js"></script>
+</head>
+<div class="create-content">
+    <div style="width: 910px; margin: 0 auto;">
+
+        <div class="alert-message error" id="ie-error" style="display: none;">
+            <p>
+                Вы используете браузер Internet Explorer. К сожалению генератор комиксов на этом браузере не поддерживает загрузку картинок.<br>
+                Для полнофункционального пользования используйте <a href="http://www.google.com/chrome" target="_blank">Google Chrome</a> или
+                <a href="http://firefox.com/" target="_blank">Mozilla Firefox</a>
+            </p>
+        </div>
+
+        <!-- Main container -->
+        <div class="canvas-container clearfix">
+
+            <script type="text/javascript">
+		var initial_category_id = 5;
+            </script>
+
+            <!-- Meme slideshow -->
+            <div id="image-picker">
+                <ul></ul>
+            </div>
+
+            <!-- Meme save dialogue -->
+            <!--
+            <div id="save-dialog" title="Создать комикс" >
+                <div>
+                    <div id="save-result"></div>
+                    <a href="javascript:void(0);" id="save-image">Share Comic</a> With title of <input id="comic-title" type="text" value="" />
+                </div>
+            </div>
+            -->
+            <!-- Brush options dialogue -->
+            <!-- Text options dialogue -->
+            <!-- Image insert dialogue -->
+            <!-- Layers management dialogue -->
+            <!-- Rage Maker Toolbar & Canvas container -->
+            <div id="rage-maker-container">
+
+                <!-- Toolbar -->
+                <div class="ragemaker-toolbar">
+                    <div class="toolbar-inner">
+                        <select id="select-image-group" style="margin-bottom: 0"><option value="5" selected="selected">Men (Чувак)</option><option value="31">Ololosh (Ололош)</option><option value="7">Rage Guy (Ярость)</option><option value="11">Yao Ming (Яо Минг)</option><option value="26">Cat (Шаблоны Котэ)</option><option value="30">Dog (Шаблоны собак)</option><option value="9">Troll №1 (Тролль №1)</option><option value="37">Troll №2 (Тролль №2)</option><option value="10">Troll №3 (Тролль №3)</option><option value="35">Saw face (Лица пилы)</option><option value="8">Popular (Популярные)</option><option value="17">People №1 (Мужчины)</option><option value="18">People №2 (Мужчины)</option><option value="28">People №3 (Мужчины)</option><option value="39">People №4 (Женщины)</option><option value="25">New (Новые шаблоны)</option><option value="12">Final (Подвал комикса)</option><option value="13">Characters (Персонажи)</option><option value="32">Super Мем (Супер мемы) </option><option value="4">Me Gusta (Мне нравится)</option><option value="27">Mem Face №1 (Мем лица)</option><option value="29">Mem Face №2 (Мем лица)</option><option value="40">Mem Face №3 (Мем лица)</option><option value="16">Intelligency (Интеллигенция)</option><option value="21">Face №1 (Эмоции на лицах)</option><option value="22">Face №2 (Эмоции на лицах)</option><option value="23">Face №3 (Эмоции на лицах)</option><option value="43">Terebonkay (Теребонкай)</option><option value="3">Forever Alone (Одиночество)</option><option value="1">Cereal Guy (Чувак со злаками)</option><option value="38">At the computer (За компьютером) </option><option value="41">New year's caps (Новогодние шапки)</option><option value="19">Сomic clouds (Облака для комиксов)</option><option value="36">Man's wigs №1 (Мужские парики №1)</option><option value="14">Female wigs №1 ( Женские парики №1)</option><option value="33">Female wigs №2 ( Женские парики №2)</option><option value="34">Female wigs №3 ( Женские парики №3)</option><option value="24">Objects for comics (предметы для комикса)</option><option value="15">Templates of comics (Шаблоны готовых комиксов)</option></select>
+                        <a href="javascript:void(0)" id="brush-dialog-open" title="Рисовать" class="btn"><i class="icon-pencil"></i></a>
+                        <a href="javascript:void(0)" id="text-dialog-open" title="Вставить текст" class="btn"><i class="icon-font"></i></a>
+                        <a href="javascript:void(0)" id="image-from-url-dialog-open" title="Вставить картинку" class="btn"><i class="icon-picture"></i></a>
+                        <a href="javascript:void(0)" id="layers-dialog-open" title="Управление слоями" class="btn" style="margin-right:155px"><i class="icon-th-large"></i></a>
+                        <!--<a href="javascript:void(0)" id="save-dialog-open" title="Сохранить комикс" class="btn"><i class="icon-download-alt"></i></a>-->
+                        <a href="javascript:void(0)" id="canvas-remove-all" title="Удалить все слои" class="btn" data-confirm="Вы уверены что хотите удалить ВСЁ содержимое комикса?"><i class="icon-trash"></i></a>
+                        <a href="javascript:void(0)" id="canvas-remove-row" title="Удалить строку" class="btn"><i class="icon-minus-sign"></i></a>
+                        <a href="javascript:void(0)" id="canvas-add-row" title="Добавить строку" class="btn"><i class="icon-plus-sign"></i></a>
+                    </div>
+                </div>
+
+                <!-- Checkbox template -->
+                <div class="pane-control-checkboxes-template pane-control-checkboxes">
+                    <input type="checkbox" name="pcb" value="">
+                </div>
+
+                <!-- Default checkboxes -->
+                <div class="pane-control-checkboxes pcctl1" style="top: 613.411px; left: 399.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="true"><!--<p>Лево</p>-->
+                </div>
+                <div class="pane-control-checkboxes pcc1" style="top: 488.4px; left: 399.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="true"><!--<p>Середина</p>-->
+                </div>
+                <div class="pane-control-checkboxes pcctr1" style="top: 613.411px; left: 1076.21px;">
+                    <input type="checkbox" name="pcb" value="" checked="true"><!--<p>Право</p>-->
+                </div>
+                <div class="pane-control-checkboxes pcc2" style="top: 728.411px; left: 399.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="true"><!--<p>Середина</p>-->
+                </div>
+
+                <!-- Main canvas container -->
+                <div id="canvas-droppable" style="position: relative; float: left; width: 652px; overflow: hidden">
+
+                    <!-- Text layer template -->
+                    <div class="text-dragger-template" style="display: none; position: absolute; top: 0px; left: 0px; height: auto">
+                        <div class="ragemaker-layer-toolbar text-dragger-tools clearfix">
+                            <a href="javascript:void(0)" class="text-dragger-rotatel" title="Повернуть влево"><i class="icon-chevron-left icon-white"></i></a>
+                            <a href="javascript:void(0)" class="text-dragger-rotater" title="Повернуть вправо"><i class="icon-chevron-right icon-white"></i></a>
+                            <span class="layer-name"></span>
+                            <a href="javascript:void(0)" class="text-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                        </div>
+                        <div class="text-container">
+                            <textarea style="height: auto; line-height: 1.2em;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Image layer template -->
+                    <div class="image-dragger-template" style="display: none; position: absolute; top: 0px; left: 0px">
+                        <div class="ragemaker-layer-toolbar image-dragger-tools clearfix">
+                            <a href="javascript:void(0)" class="image-dragger-rotatel" title="Повернуть влево"><i class="icon-chevron-left icon-white"></i></a>
+                            <a href="javascript:void(0)" class="image-dragger-rotater" title="Повернуть вправо"><i class="icon-chevron-right icon-white"></i></a>
+                            <a href="javascript:void(0)" class="image-dragger-flip" title="Перевернуть горизонтально"><i class="icon-resize-horizontal icon-white"></i></a>
+                            <span class="layer-name"></span>
+                            <a href="javascript:void(0)" class="image-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                        </div>
+                        <div class="image-container" style="overflow: visible"></div>
+                    </div>
+
+                    <!-- Drawing canvas layer -->
+                    <div class="canvas-dragger-template" style="display: none; position: absolute; top: 0px; left: 0px">
+                        <div class="ragemaker-layer-toolbar canvas-dragger-tools clearfix">
+                            <a href="javascript:void(0)" class="canvas-dragger-clearcanvas" title="Очистить холст"><i class="icon-trash icon-white"></i></a>
+                            <a href="javascript:void(0)" class="canvas-dragger-show-brushtools" title="Открыть настройки рисования"><i class="icon-pencil icon-white"></i></a>
+                            <a href="javascript:void(0)" class="canvas-dragger-undo" title="Отменить действие"><i class="icon-repeat icon-white"></i></a>
+                            <span class="layer-name"></span>
+                            <a href="javascript:void(0)" class="canvas-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                        </div>
+                        <div class="drawcanvas-container" style="overflow: visible">
+                            <canvas width="200" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Main Canvas -->
+                    <canvas id="MyCanvas" width="650" height="480" class="ui-droppable"></canvas>
+
+                    <div class="image-dragger ui-draggable" style="position: absolute; top: 74.9875px; left: 514.988px; z-index: 1001;">
+                        <div class="ragemaker-layer-toolbar image-dragger-tools clearfix">
+                            <a href="javascript:void(0)" class="image-dragger-rotatel" title="Повернуть влево"><i class="icon-chevron-left icon-white"></i></a>
+                            <a href="javascript:void(0)" class="image-dragger-rotater" title="Повернуть вправо"><i class="icon-chevron-right icon-white"></i></a>
+                            <a href="javascript:void(0)" class="image-dragger-flip" title="Перевернуть горизонтально"><i class="icon-resize-horizontal icon-white"></i></a>
+                            <span class="layer-name">картинка</span>
+                            <a href="javascript:void(0)" class="image-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                        </div>
+                        <div class="image-container ui-resizable" style="overflow: visible; width: 135px; height: 98px;"><div class="ui-resizable-handle ui-resizable-e"></div><div class="ui-resizable-handle ui-resizable-s"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 1001;"></div><img src="./Создать комикс _ Генератор комиксов_files/xDqZ8DI3.png" style="width: 135px; height: 98px;"></div>
+                    </div><div class="text-dragger ui-selected ui-draggable" style="position: absolute; top: 74px; left: 98.9875px; height: auto; z-index: 1002;">
+                        <div class="ragemaker-layer-toolbar text-dragger-tools clearfix">
+                            <a href="javascript:void(0)" class="text-dragger-rotatel" title="Повернуть влево"><i class="icon-chevron-left icon-white"></i></a>
+                            <a href="javascript:void(0)" class="text-dragger-rotater" title="Повернуть вправо"><i class="icon-chevron-right icon-white"></i></a>
+                            <span class="layer-name">текст</span>
+                            <a href="javascript:void(0)" class="text-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                        </div>
+                        <div class="text-container ui-resizable" style="width: 202px; height: 0px;">
+                            <textarea style="height: 36px; line-height: 1.2em; overflow: hidden; padding-top: 0px; padding-bottom: 0px; font-family: serif; color: rgb(0, 0, 0); font-size: 30px; width: 200px;"></textarea>
+                            <div class="ui-resizable-handle ui-resizable-e"></div><div class="ui-resizable-handle ui-resizable-s"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 1001;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pane-control-checkboxes pcctl2" style="top: 853.4px; left: 399.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="checked">
+                </div><div class="pane-control-checkboxes pcctr2" style="top: 853.4px; left: 1076.21px;">
+                    <input type="checkbox" name="pcb" value="" checked="checked">
+                </div><div class="pane-control-checkboxes pcc3" style="top: 968.4px; left: 399.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="checked">
+                </div><div class="pane-control-checkboxes pcctl3" style="top: 1093.4px; left: 399.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="checked">
+                </div><div class="pane-control-checkboxes pcctr3" style="top: 1093.4px; left: 1076.2px;">
+                    <input type="checkbox" name="pcb" value="" checked="checked">
+                </div>
+            </div>
+        </div>
+        <!-- End of main container -->
+
+        <noindex>
+            <div class="alert alert-error">
+                Для незарегистрированных пользователей, генератор комиксов доступен лишь в режиме ознакомления.<br>
+                Чтобы получить возможность сохранить все свои действия, необходимо зарегистрироваться, либо войти в свою учётную запись.<br>
+                <a class="btn" href="http://1001mem.ru/signin?to=%2Fcreate_comics">Вход</a> <a class="btn" href="http://1001mem.ru/signup?to=%2Fcreate_comics">Регистрация</a>
+            </div>
+        </noindex>
+
+
+    </div>
+</div>

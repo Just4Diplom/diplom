@@ -302,6 +302,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DragAndDrop.css" />
+    <Content Include="Content\images\nrIUH3r4.png" />
     <Content Include="Content\loading_spinner.gif" />
     <Content Include="Content\ng-tags-input.bootstrap.css" />
     <Content Include="Content\ng-tags-input.css" />
@@ -388,6 +389,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\comix\ragemaker.js" />
     <Content Include="Scripts\DragAndDrop.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1173,6 +1175,7 @@
     <Content Include="Views\Templates\BalloonView.cshtml" />
     <Content Include="Views\Search\SearchByTag.cshtml" />
     <Content Include="Views\Home\_Comix.cshtml" />
+    <Content Include="Views\Comix\NewComix.cshtml" />
     <None Include="Views\Templates\Triad.cshtml" />
     <None Include="Views\Templates\Tetrad.cshtml" />
     <Content Include="Web.config" />

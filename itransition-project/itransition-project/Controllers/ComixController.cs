@@ -10,11 +10,42 @@ using Microsoft.AspNet.Identity;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using itransition_project.Lucene;
+using System.IO;
 
 namespace itransition_project.Controllers
 {
     public class ComixController : Controller
     {
+
+
+        [Authorize]
+        public ActionResult NewComix()
+        {
+            return View();
+        }
+
+        public string faces_groups(string _)
+        {
+            return @"[{""id"":""5"",""title"":""Men(\u0427\u0443\u0432\u0430\u043a)""}]";
+        }
+
+        public string faces(string gid, string _)
+        {
+            return @"[{ ""file_name"":""nrIUH3r4.png"",""category_id"":""5""}]";
+        }
+
+        public ActionResult images(string img)
+        {
+            var dir = Server.MapPath("/Content/Images//");
+            var path = Path.Combine(dir, "nrIUH3r4.png");
+            var theFile = new FileInfo(path);
+            if (theFile.Exists)
+            {
+                return File(System.IO.File.ReadAllBytes(path), "image/png");
+            }
+            return this.HttpNotFound();
+        }
+
         // GET: Page
         public ActionResult Index(int id)
         {
