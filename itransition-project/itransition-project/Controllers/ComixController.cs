@@ -10,11 +10,75 @@ using Microsoft.AspNet.Identity;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using itransition_project.Lucene;
+using System.IO;
 
 namespace itransition_project.Controllers
 {
     public class ComixController : Controller
     {
+
+
+        public string faces_groups(string _)
+        {
+            return @"[{""id"":""5"",""title"":""Men(\u0427\u0443\u0432\u0430\u043a)""}]";
+        }
+
+        public string faces(string gid, string _)
+        {
+            return @"[{ ""file_name"":""nrIUH3r4.png"",""category_id"":""5""}]";
+        }
+
+        public ActionResult images(string img)
+        {
+            var dir = Server.MapPath(@"/Content/StaticImages/");
+            var path = Path.Combine(dir, @"nrIUH3r4.png");
+            var theFile = new FileInfo(path);
+            if (theFile.Exists)
+            {
+                return File(System.IO.File.ReadAllBytes(path), @"image/png");
+            }
+            return this.HttpNotFound();
+        }
+        const string ExpectedImagePrefix = "data:image/jpeg;base64,";
+
+        private class Image
+        {
+            public string image { get; set; }
+        }
+
+        public ActionResult image_from_file()
+        {
+
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    using (var binaryReader = new BinaryReader(Request.Files[0].InputStream))
+                    {
+                        var a = new Image() {image = ""};
+                        var q = File(binaryReader.ReadBytes(Request.Files[0].ContentLength),
+                            GetMimeType(file.FileName));
+                        q.
+                        return Json(a);
+                    }
+                }
+            }
+
+            return this.HttpNotFound();
+        }
+
+        private string GetMimeType(string fileName)
+        {
+            string mimeType = "application/unknown";
+            string ext = System.IO.Path.GetExtension(fileName).ToLower();
+            Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+            if (regKey != null && regKey.GetValue("Content Type") != null)
+                mimeType = regKey.GetValue("Content Type").ToString();
+            return mimeType;
+        }
+
         // GET: Page
         public ActionResult Index(int id)
         {
@@ -36,6 +100,11 @@ namespace itransition_project.Controllers
             return View();
         }
 
+        public ActionResult NewComix()
+        {
+            return View();
+        }
+
         public ActionResult ViewComix(int id)
         {
             return View(MakeModel(id));
@@ -53,7 +122,8 @@ namespace itransition_project.Controllers
             var currentUserId = System.Web.HttpContext.Current.User.Identity.GetUserId();
             var currentAppUser = db.Users.First(x => x.Id == currentUserId);
 
-            Comix c = new Comix() {
+            Comix c = new Comix()
+            {
                 Author = currentAppUser,
                 CreationTime = DateTime.Now,
                 Name = comix.Name,
@@ -71,7 +141,7 @@ namespace itransition_project.Controllers
                     var currentTag = tagSet.FirstOrDefault(t => t.Text.Equals(tag.text));
                     if (currentTag == null)
                     {
-                        c.Tags.Add(new Tag { Text = tag.text});
+                        c.Tags.Add(new Tag { Text = tag.text });
                     }
                     else
                     {
@@ -99,7 +169,7 @@ namespace itransition_project.Controllers
                     string bg = image.BackgroundImage;
 
                     if (bg.Substring(0, 4) == "data")
-                    { 
+                    {
                         var uploadParams = new ImageUploadParams
                         {
                             File = new FileDescription(bg)
@@ -121,18 +191,18 @@ namespace itransition_project.Controllers
                     };
 
                     if (image.Balloons != null)
-                    foreach (var balloon in image.Balloons)
-                    {
-                        Balloon b = new Balloon()
+                        foreach (var balloon in image.Balloons)
                         {
-                            Text = balloon.Text,
-                            Top = balloon.Top,
-                            Left = balloon.Left,
-                            Width = balloon.Width,
-                            Height = balloon.Height
-                        };
-                        f.Balloons.Add(b);
-                    }
+                            Balloon b = new Balloon()
+                            {
+                                Text = balloon.Text,
+                                Top = balloon.Top,
+                                Left = balloon.Left,
+                                Width = balloon.Width,
+                                Height = balloon.Height
+                            };
+                            f.Balloons.Add(b);
+                        }
                     p.Frames.Add(f);
                 }
                 c.Pages.Add(p);
@@ -274,7 +344,7 @@ namespace itransition_project.Controllers
                     }
                 }
             }
-            comix.Ratings.Add(new Rating {Condition = isPositive, User = user});
+            comix.Ratings.Add(new Rating { Condition = isPositive, User = user });
             var c = db.Comixes.First(x => x.Id == comix.Id);
             var edb = db.Comixes.First(x => x.Id == Id);
             int rating = edb.Ratings.Sum(userRate => userRate.Condition ? 1 : -1);

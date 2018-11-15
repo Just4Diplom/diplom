@@ -1,0 +1,196 @@
+﻿@{
+    Layout = "";    
+}
+@{
+    ViewBag.Title = "NewComix";
+}
+
+<h2>NewComix</h2>
+
+<div class="canvas-container clearfix">
+
+    <script type="text/javascript">
+		var initial_category_id = 5;
+    </script>
+
+    <!-- Meme slideshow -->
+    <div id="image-picker">
+        <ul></ul>
+    </div>
+
+    <!-- Meme save dialogue -->
+    <!--
+    <div id="save-dialog" title="Создать комикс" >
+        <div>
+            <div id="save-result"></div>
+            <a href="javascript:void(0);" id="save-image">Share Comic</a> With title of <input id="comic-title" type="text" value="" />
+        </div>
+    </div>
+    -->
+    <!-- Brush options dialogue -->
+    <div id="brush-dialog" title="Настройки рисования">
+        <h3><span id="stroke-color">Цвет заливки</span></h3>
+        <div>
+            <div id="stroke-color-picker"></div>
+        </div>
+        <h3>Размер кисти<div id="brush-size" class="accordion-amount"></div></h3>
+        <div>
+            <div id="slider-brushsize" style="width: 200px;"></div>
+            <div id="brush-size-example" style="margin: 15px auto;"></div>
+        </div>
+    </div>
+
+    <!-- Text options dialogue -->
+    <div id="text-dialog" title="Настройки Текста">
+        <h3>
+            <span id="fill-color">Цвет текста</span>
+        </h3>
+        <div id="fill-color-roller">
+            <div id="fill-color-picker"></div>
+        </div>
+        <h3>Шрифт / Размер<div id="font-size" class="accordion-amount"></div></h3>
+        <div>
+            Шрифт текста:
+            <form action="#">
+                <select id="select-font">
+                    <option value="Serif">Serif</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Sans-serif">Sans-serif</option>
+                    <option value="Monospace">Monospace</option>
+                </select>
+            </form>
+            Размер текста:
+            <div id="font-size-slider" style="width:200px; height: 5px;"></div>
+        </div>
+    </div>
+
+    <!-- Image insert dialogue -->
+    <div id="image-from-url-dialog" title="Загрузить картинку">
+        <h5>Загрузить картинку с компьютера</h5>
+        <input name="imagefile" id="imagefile" type="file" style="display: block; margin-bottom: 5px" size="50" />
+        <a href="javascript:void(0);" class="btn primary small" id="get-image-file">Загрузить картинку</a>
+
+        <h5>Вставить картинку из ссылки</h5>
+        <input id="image-url" type="text" value="" style="width: 310px; display: block; margin-bottom: 5px" />
+        <a href="javascript:void(0);" class="btn primary small" id="get-image">Вставить картинку</a>
+
+        <div class="result"></div>
+        <!--<img id="loading" src="images/loading.gif" style="visibility: hidden"/>-->
+    </div>
+
+    <!-- Layers management dialogue -->
+    <div id="layers-dialog" title="Управление слоями">
+        <ol id="layers">
+            <li class="layers-template ui-widget-content"><input type="text" name="layer-name-input" class="layer-name-input" /></li>
+        </ol>
+        <div id="layer-tools">
+            <a href="javascript:void(0)" id="move-layer-up" class="btn btn-icon" title="Передвинуть вверх"><i class="icon-arrow-up"></i></a>
+            <a href="javascript:void(0)" id="move-layer-down" class="btn btn-icon" title="Передвинуть вниз"><i class="icon-arrow-down"></i></a>
+            <a href="javascript:void(0)" id="delete-layer" class="btn btn-icon" title="Удалить слой"><i class="icon-trash"></i></a>
+        </div>
+    </div>
+
+    <!-- Rage Maker Toolbar & Canvas container -->
+    <div id="rage-maker-container">
+
+        <!-- Toolbar -->
+        <div class="ragemaker-toolbar">
+            <div class="toolbar-inner">
+                <select id="select-image-group" style="margin-bottom: 0"></select>
+                <a href="javascript:void(0)" id="brush-dialog-open" title="Рисовать" class="btn"><i class="icon-pencil"></i></a>
+                <a href="javascript:void(0)" id="text-dialog-open" title="Вставить текст" class="btn"><i class="icon-font"></i></a>
+                <a href="javascript:void(0)" id="image-from-url-dialog-open" title="Вставить картинку" class="btn"><i class="icon-picture"></i></a>
+                <a href="javascript:void(0)" id="layers-dialog-open" title="Управление слоями" class="btn" style="margin-right:155px"><i class="icon-th-large"></i></a>
+                <!--<a href="javascript:void(0)" id="save-dialog-open" title="Сохранить комикс" class="btn"><i class="icon-download-alt"></i></a>-->
+                <a href="javascript:void(0)" id="canvas-remove-all" title="Удалить все слои" class="btn" data-confirm="Вы уверены что хотите удалить ВСЁ содержимое комикса?"><i class="icon-trash"></i></a>
+                <a href="javascript:void(0)" id="canvas-remove-row" title="Удалить строку" class="btn"><i class="icon-minus-sign"></i></a>
+                <a href="javascript:void(0)" id="canvas-add-row" title="Добавить строку" class="btn"><i class="icon-plus-sign"></i></a>
+            </div>
+        </div>
+
+        <!-- Checkbox template -->
+        <div class="pane-control-checkboxes-template pane-control-checkboxes">
+            <input type="checkbox" name="pcb" value="" />
+        </div>
+
+        <!-- Default checkboxes -->
+        <div class="pane-control-checkboxes pcctl1">
+            <input type="checkbox" name="pcb" value="" checked="true" /><!--<p>Лево</p>-->
+        </div>
+        <div class="pane-control-checkboxes pcc1">
+            <input type="checkbox" name="pcb" value="" checked="true" /><!--<p>Середина</p>-->
+        </div>
+        <div class="pane-control-checkboxes pcctr1">
+            <input type="checkbox" name="pcb" value="" checked="true" /><!--<p>Право</p>-->
+        </div>
+        <div class="pane-control-checkboxes pcc2">
+            <input type="checkbox" name="pcb" value="" checked="true" /><!--<p>Середина</p>-->
+        </div>
+
+        <!-- Main canvas container -->
+        <div id="canvas-droppable" style="position: relative; float: left; width: 652px; overflow: hidden">
+
+            <!-- Text layer template -->
+            <div class="text-dragger-template" style="display: none; position: absolute; top: 0px; left: 0px; height: auto">
+                <div class="ragemaker-layer-toolbar text-dragger-tools clearfix">
+                    <a href="javascript:void(0)" class="text-dragger-rotatel" title="Повернуть влево"><i class="icon-chevron-left icon-white"></i></a>
+                    <a href="javascript:void(0)" class="text-dragger-rotater" title="Повернуть вправо"><i class="icon-chevron-right icon-white"></i></a>
+                    <span class="layer-name"></span>
+                    <a href="javascript:void(0)" class="text-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                </div>
+                <div class="text-container">
+                    <textarea style="height: auto; line-height: 1.2em;"></textarea>
+                </div>
+            </div>
+
+            <!-- Image layer template -->
+            <div class="image-dragger-template" style="display: none; position: absolute; top: 0px; left: 0px">
+                <div class="ragemaker-layer-toolbar image-dragger-tools clearfix">
+                    <a href="javascript:void(0)" class="image-dragger-rotatel" title="Повернуть влево"><i class="icon-chevron-left icon-white"></i></a>
+                    <a href="javascript:void(0)" class="image-dragger-rotater" title="Повернуть вправо"><i class="icon-chevron-right icon-white"></i></a>
+                    <a href="javascript:void(0)" class="image-dragger-flip" title="Перевернуть горизонтально"><i class="icon-resize-horizontal icon-white"></i></a>
+                    <span class="layer-name"></span>
+                    <a href="javascript:void(0)" class="image-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                </div>
+                <div class="image-container" style="overflow: visible"></div>
+            </div>
+
+            <!-- Drawing canvas layer -->
+            <div class="canvas-dragger-template" style="display: none; position: absolute; top: 0px; left: 0px">
+                <div class="ragemaker-layer-toolbar canvas-dragger-tools clearfix">
+                    <a href="javascript:void(0)" class="canvas-dragger-clearcanvas" title="Очистить холст"><i class="icon-trash icon-white"></i></a>
+                    <a href="javascript:void(0)" class="canvas-dragger-show-brushtools" title="Открыть настройки рисования"><i class="icon-pencil icon-white"></i></a>
+                    <a href="javascript:void(0)" class="canvas-dragger-undo" title="Отменить действие"><i class="icon-repeat icon-white"></i></a>
+                    <span class="layer-name"></span>
+                    <a href="javascript:void(0)" class="canvas-dragger-close" title="Удалить слой"><i class="icon-remove icon-white"></i></a>
+                </div>
+                <div class="drawcanvas-container" style="overflow: visible">
+                    <canvas width="200" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Main Canvas -->
+            <canvas id="MyCanvas" width="650"></canvas>
+
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet" media="all">
+<link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link type="text/css" href="http://s.1001mem.ru/stylesheets/style.css?115561" rel="stylesheet" media="all">
+<link type="text/css" href="http://s.1001mem.ru/ragemaker/jquery-ui-1.8.17.custom.css?115561" rel="stylesheet" media="all">
+<link type="text/css" href="http://s.1001mem.ru/ragemaker/ragemaker.css?115561" rel="stylesheet" media="all">
+	
+<!-- Javascript -->
+<script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/javascripts/funposts.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/javascripts/mem.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/ragemaker/jquery.ui-1.8.17.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/ragemaker/rotate.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/ragemaker/ajaxfileupload.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/ragemaker/shortcut.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/ragemaker/taexpander.js?115561"></script>
+<script type="text/javascript" src="http://s.1001mem.ru/ragemaker/farbtastic.js?115561"></script>
+<script src="~/Scripts/Comix/ragemaker.js"></script>
