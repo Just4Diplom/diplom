@@ -41,32 +41,33 @@ namespace itransition_project.Controllers
         }
         const string ExpectedImagePrefix = "data:image/jpeg;base64,";
 
-        private class Image
+        public class Image
         {
             public string image { get; set; }
         }
-
-        public ActionResult image_from_file()
+        [HttpPost]
+        public JsonResult image_from_file(Image qwe)
         {
-
+            var file = Request.Files[0]; //Uploaded file
             if (Request.Files.Count > 0)
             {
-                var file = Request.Files[0];
 
                 if (file != null && file.ContentLength > 0)
                 {
                     using (var binaryReader = new BinaryReader(Request.Files[0].InputStream))
                     {
-                        var a = new Image() {image = ""};
-                        var q = File(binaryReader.ReadBytes(Request.Files[0].ContentLength),
-                            GetMimeType(file.FileName));
-                        q.
-                        return Json(a);
+                        var a = new Image() { image = "" };
+                        var q = binaryReader.ReadBytes(Request.Files[0].ContentLength);
+                        var fileName = GetMimeType(file.FileName);
+                        a.image = "data:"+ fileName + ";base64," + Convert.ToBase64String(q);
+                        var result = Json(a, JsonRequestBehavior.AllowGet);
+                        result.ContentType = "text/html; charset=UTF-8";
+                        return result;
                     }
                 }
             }
 
-            return this.HttpNotFound();
+            return null;
         }
 
         private string GetMimeType(string fileName)
