@@ -402,6 +402,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Comix\html2canvas.js" />
     <Content Include="Scripts\Comix\ragemaker.js" />
     <Content Include="Scripts\DragAndDrop.js" />
     <Content Include="Scripts\errors.json" />

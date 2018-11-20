@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "";    
+    Layout = "";
 }
 @{
     ViewBag.Title = "NewComix";
@@ -175,18 +175,27 @@
         </div>
     </div>
 </div>
+<div style="margin:20px 0 30px; text-align: center;">
+    <a id="save_image_locally" onclick="save()"class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Опубликовать</a>
+</div>
+
+
 
 
 
 <!-- Styles -->
 <link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet" media="all">
 <link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<!-- 
 <link type="text/css" href="http://s.1001mem.ru/stylesheets/style.css?115561" rel="stylesheet" media="all">
+-->
 <link type="text/css" href="http://s.1001mem.ru/ragemaker/jquery-ui-1.8.17.custom.css?115561" rel="stylesheet" media="all">
+
 <link type="text/css" href="http://s.1001mem.ru/ragemaker/ragemaker.css?115561" rel="stylesheet" media="all">
-	
+
 <!-- Javascript -->
-<script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script async="" src="//www.google-analytics.com/analytics.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 <script type="text/javascript" src="http://s.1001mem.ru/javascripts/funposts.js?115561"></script>
 <script type="text/javascript" src="http://s.1001mem.ru/javascripts/mem.js?115561"></script>
 <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/jquery.ui-1.8.17.js?115561"></script>
@@ -196,3 +205,54 @@
 <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/taexpander.js?115561"></script>
 <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/farbtastic.js?115561"></script>
 <script src="~/Scripts/Comix/ragemaker.js"></script>
+<script src="~/Scripts/Comix/html2canvas.js"></script>
+
+<script>
+    function save() {
+        document.getElementById("save_image_locally").addEventListener("click", function () {
+
+            html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
+
+                console.log(canvas);
+                var a = canvas.toDataURL();
+                $.ajax({
+                    type: "POST",
+                    traditional: true,
+                    dataType: "json",
+                    url: "/comix/SaveComix",
+                    data: a,
+                    cache: false,
+                complete: function (data) {
+                }});
+
+            });
+        });
+    }
+
+    
+    function saveAs(uri, filename) {
+
+        var link = document.createElement('a');
+
+        if (typeof link.download === 'string') {
+
+            link.href = uri;
+            link.download = filename;
+
+            //Firefox requires the link to be in the body
+            document.body.appendChild(link);
+
+            //simulate click
+            link.click();
+
+            //remove the link when done
+            document.body.removeChild(link);
+
+        } else {
+
+            window.open(uri);
+
+        }
+    }
+
+</script>
