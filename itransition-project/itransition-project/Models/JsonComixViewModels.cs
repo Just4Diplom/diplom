@@ -12,7 +12,7 @@ namespace itransition_project.Models
         public AuthorViewModel Author { get; set; }
         public DateTime CreationTime { get; set; }
         public string Name { get; set; }
-        public List<JsonPagesViewModel> Pages { get; set; }
+        public string Image { get; set; }
         public List<TagText> Tags { get; set; }
     }
 
@@ -20,7 +20,7 @@ namespace itransition_project.Models
     public class JsonComixViewModel
     {
         public string Name { get; set; }
-        public List<JsonPagesViewModel> Pages { get; set; }
+        public string Image { get; set; }
         public List<TagText> Tags { get; set; }
     }
 

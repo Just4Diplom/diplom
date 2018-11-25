@@ -34,22 +34,9 @@
     </div>
 </div>
 <div class="container">
-    <div id="pages">
-        @foreach (var page in Model.Pages)
-        {
-            switch (page.Template)
-            {
-                case "skew":
-                    @Html.Partial("~/Views/Templates/SkewView.cshtml", page)
-                    break;
-                case "triad":
-                    @Html.Partial("~/Views/Templates/TriadView.cshtml", page)
-                    break;
-                case "tetrad":
-                    @Html.Partial("~/Views/Templates/TetradView.cshtml", page)
-                    break;
-            }
-        }
+    <div id="comix">
+        <br />
+        <img style="display:block; margin:auto" src="@Model.Image"/>
     </div>
 </div>
 @section scripts{

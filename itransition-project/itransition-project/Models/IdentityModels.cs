@@ -55,8 +55,6 @@ namespace itransition_project.Models
         public DbSet<Medal> Medals { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Comix> Comixes { get; set; }
-        public DbSet<Page> Pages { get; set; }
-        public DbSet<Frame> Frames { get; set; }
         public DbSet<AgeRating> AgeRatings { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Template> Templates { get; set; }

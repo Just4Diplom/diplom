@@ -50,19 +50,6 @@ namespace itransition_project.Lucene
             }
             doc.Add(new Field("Tags", tags, Field.Store.YES, Field.Index.ANALYZED));
 
-            string Balloon = "";
-            foreach (var pages in entry.Pages)
-            {
-                foreach (var frames in pages.Frames)
-                {
-                    foreach (var balloons in frames.Balloons)
-                    {
-                            Balloon += balloons.Text + " ";
-                    }
-                }
-            }
-            doc.Add(new Field("Balloons", Balloon, Field.Store.YES, Field.Index.ANALYZED));
-
             // add entry to index
             writer.AddDocument(doc);
         }

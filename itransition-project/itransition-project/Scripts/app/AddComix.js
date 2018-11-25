@@ -9,77 +9,77 @@ app.controller('switchTemplateController', function ($scope) {
 });
 
 app.directive('fileDropzone', function () {
-        return {
-            restrict: 'A',
-            scope: {
-                file: '=',
-                fileName: '='
-            },
-            link: function (scope, element, attrs) {
+    return {
+        restrict: 'A',
+        scope: {
+            file: '=',
+            fileName: '='
+        },
+        link: function (scope, element, attrs) {
 
-                var checkSize, isTypeValid, processDragOverOrEnter, validMimeTypes;
+            var checkSize, isTypeValid, processDragOverOrEnter, validMimeTypes;
 
-                processDragOverOrEnter = function (event) {
-                    if (event != null) {
-                        event.preventDefault();
-                    }
-                    event = event.originalEvent;
-                    event.dataTransfer.effectAllowed = 'copy';
+            processDragOverOrEnter = function (event) {
+                if (event != null) {
+                    event.preventDefault();
+                }
+                event = event.originalEvent;
+                event.dataTransfer.effectAllowed = 'copy';
+                return false;
+            };
+            validMimeTypes = attrs.fileDropzone;
+            checkSize = function (size) {
+                var _ref;
+                if (((_ref = attrs.maxFileSize) === (void 0) || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
+                    return true;
+                } else {
+                    alert("File must be smaller than " + attrs.maxFileSize + " MB");
                     return false;
-                };
-                validMimeTypes = attrs.fileDropzone;
-                checkSize = function (size) {
-                    var _ref;
-                    if (((_ref = attrs.maxFileSize) === (void 0) || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
-                        return true;
-                    } else {
-                        alert("File must be smaller than " + attrs.maxFileSize + " MB");
-                        return false;
-                    }
-                };
-                isTypeValid = function (type) {
-                    if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
-                        return true;
-                    } else {
-                        alert("Invalid file type.  File must be one of following types " + validMimeTypes);
-                        return false;
-                    }
-                };
-                element.bind('dragover', processDragOverOrEnter);
-                element.bind('dragenter', processDragOverOrEnter);
-                return element.bind('drop', function (event) {
-                    var file, name, reader, size, type;
-                    if (event != null) {
-                        event.preventDefault();
-                    }
-                    event = event.originalEvent;
-                    reader = new FileReader();
-                    reader.onload = function (evt) {
-                        if (checkSize(size) && isTypeValid(type)) {
-                            return scope.$apply(function () {
-                                scope.file = evt.target.result;
-                                if (angular.isString(scope.fileName)) {
-                                    return scope.fileName = name;
-                                }
-                            });
-                        }
-                    };
-                    try{
-                        file = event.dataTransfer.files[0];
-
-                        name = file.name;
-                        type = file.type;
-                        size = file.size;
-                        reader.readAsDataURL(file);
-                    }
-                    catch (e) {
-                        return false;
-                    }
+                }
+            };
+            isTypeValid = function (type) {
+                if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
+                    return true;
+                } else {
+                    alert("Invalid file type.  File must be one of following types " + validMimeTypes);
                     return false;
-                });
-            }
-        };
-    });
+                }
+            };
+            element.bind('dragover', processDragOverOrEnter);
+            element.bind('dragenter', processDragOverOrEnter);
+            return element.bind('drop', function (event) {
+                var file, name, reader, size, type;
+                if (event != null) {
+                    event.preventDefault();
+                }
+                event = event.originalEvent;
+                reader = new FileReader();
+                reader.onload = function (evt) {
+                    if (checkSize(size) && isTypeValid(type)) {
+                        return scope.$apply(function () {
+                            scope.file = evt.target.result;
+                            if (angular.isString(scope.fileName)) {
+                                return scope.fileName = name;
+                            }
+                        });
+                    }
+                };
+                try{
+                    file = event.dataTransfer.files[0];
+
+                    name = file.name;
+                    type = file.type;
+                    size = file.size;
+                    reader.readAsDataURL(file);
+                }
+                catch (e) {
+                    return false;
+                }
+                return false;
+            });
+        }
+    };
+});
 
 app.controller('dragndrop', function ($scope) {
     $scope.image = null;
@@ -95,25 +95,45 @@ app.controller("pagesController", function ($scope, $http) {
     $scope.$watch(function () {
         return angular.element;
     }, function () {
-            $scope.$evalAsync(function () {
-                $scope.drgbl();
-            });
+        $scope.$evalAsync(function () {
+            $scope.drgbl();
+        });
     });
     $scope.tags = [];
     $scope.loadTags = function (query) {
         return $http.get("/Comix/GetTagsForAutocomplete/" + query);
     };
     $scope.save = function () {
-        var comix = $http.post('/Comix/ReceiveComix', getComix($scope));
-        comix.success(function(data, status, headers, config) {
-            window.location.href = data;
+        html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
+
+            console.log(canvas);
+            var image = canvas.toDataURL();
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                dataType: "json",
+                url: "/Comix/ReceiveComix",
+                data: { 
+                    "image": image,
+                    "tags" : $scope.tags, 
+                    "name": $("#Name").val()
+                },
+                cache: false,
+                complete: function (data) {
+                }
+            });
+
         });
-        comix.error(function(data, status, headers, config) {
-            //alert( "failure message: " + JSON.stringify({data: data}));
-            alert("Unable to upload comix");
-        });		
+        //var comix = $http.post('/Comix/ReceiveComix', getComix($scope));
+        //comix.success(function(data, status, headers, config) {
+        //    window.location.href = data;
+        //});
+        //comix.error(function(data, status, headers, config) {
+        //    //alert( "failure message: " + JSON.stringify({data: data}));
+        //    alert("Unable to upload comix");
+        //});		
     }
-    }).directive("comixManager", function ($compile) {
+}).directive("comixManager", function ($compile) {
     return {
         templateUrl: '/Comix/ComixPage',
         restrict: 'E',
@@ -124,7 +144,7 @@ app.controller("pagesController", function ($scope, $http) {
             }
         }
     };
-    });
+});
 
 //app.directive('drgbl', function($timeout) {
 //    return {
@@ -137,15 +157,25 @@ app.controller("pagesController", function ($scope, $http) {
 //});
 
 function getComix(scope) {
-    var pages = [];
-    for(let page of $("#pages").children("comix-manager").toArray()) {
-        pages.push(getPage(page));
-    }
-    return { 
-        "pages": pages,
-        "tags" : scope.tags, 
-        "name": $("#Name").val()
-    };
+    image = html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
+
+        console.log(canvas);
+        var a = canvas.toDataURL();
+        return "lol";
+    });
+return { 
+    "image": image,
+    "tags" : scope.tags, 
+    "name": $("#Name").val()
+};
+}
+function saveImageCanvas() {
+    html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
+
+        console.log(canvas);
+        var a = canvas.toDataURL();
+        return a;
+    });
 }
 
 function getPage(page) {

@@ -1,0 +1,82 @@
+﻿@using itransition_project.Models
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@using Resources
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ComixCreator</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @if (Request.IsAuthenticated)
+    {
+        ApplicationUser user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(HttpContext.Current.User.Identity.GetUserId());
+        if (user.Theme == "Light")
+        {
+            @Styles.Render("~/Content/css_light")
+        }
+        else
+        {
+            @Styles.Render("~/Content/css_dark")
+        }
+    }
+    else
+    {
+        @Styles.Render("~/Content/css_dark")
+    }
+    @Styles.Render("~/Content/balloons")
+    @Styles.Render("~/Content/ng-tags-input")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ComixMaker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/UserInfo")
+    @RenderSection("scripts", required: false)
+    <!-- Styles
+    <link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet" media="all">
+         -->
+    <link type="text/css" href="///cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!--
+    <link type="text/css" href="http://s.1001mem.ru/stylesheets/style.css?115561" rel="stylesheet" media="all">
+    -->
+    <link type="text/css" href="http://s.1001mem.ru/ragemaker/jquery-ui-1.8.17.custom.css?115561" rel="stylesheet" media="all">
+
+    <link type="text/css" href="http://s.1001mem.ru/ragemaker/ragemaker.css?115561" rel="stylesheet" media="all">
+
+    <!-- Javascript -->
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/javascripts/funposts.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/javascripts/mem.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/jquery.ui-1.8.17.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/rotate.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/ajaxfileupload.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/shortcut.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/taexpander.js?115561"></script>
+    <script type="text/javascript" src="http://s.1001mem.ru/ragemaker/farbtastic.js?115561"></script>
+    <script src="~/Scripts/Comix/ragemaker.js"></script>
+    <script src="~/Scripts/Comix/html2canvas.js"></script>
+</body>
+</html>

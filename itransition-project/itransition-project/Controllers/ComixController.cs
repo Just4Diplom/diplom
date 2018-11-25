@@ -128,7 +128,7 @@ namespace itransition_project.Controllers
                 Author = currentAppUser,
                 CreationTime = DateTime.Now,
                 Name = comix.Name,
-                Pages = new List<Page>(),
+                Image = comix.Image,
                 Tags = new List<Tag>()
             };
 
@@ -149,65 +149,6 @@ namespace itransition_project.Controllers
                         c.Tags.Add(currentTag);
                     }
                 }
-
-            foreach (var page in comix.Pages)
-            {
-                Page p = new Page()
-                {
-                    Template = db.Templates.First(x => x.Type == page.Template),
-                    Frames = new List<Frame>()
-                };
-
-                foreach (var image in page.FrameImages)
-                {
-                    var account = new Account(
-                    "da40pd4iw",
-                    "878111261769614",
-                    "d_UzO32EJIqhtFnshPcdgalOFeg");
-
-                    var cloudinary = new Cloudinary(account);
-
-                    string bg = image.BackgroundImage;
-
-                    if (bg.Substring(0, 4) == "data")
-                    {
-                        var uploadParams = new ImageUploadParams
-                        {
-                            File = new FileDescription(bg)
-                        };
-
-                        var uploadResult = cloudinary.Upload(uploadParams);
-
-                        bg = "url(\"" + uploadResult.SecureUri.ToString() + "\")";
-                    }
-
-                    Frame f = new Frame()
-                    {
-                        BackgroundImage = bg,
-                        Top = image.Top,
-                        Left = image.Left,
-                        Width = image.Width,
-                        Height = image.Height,
-                        Balloons = new List<Balloon>()
-                    };
-
-                    if (image.Balloons != null)
-                        foreach (var balloon in image.Balloons)
-                        {
-                            Balloon b = new Balloon()
-                            {
-                                Text = balloon.Text,
-                                Top = balloon.Top,
-                                Left = balloon.Left,
-                                Width = balloon.Width,
-                                Height = balloon.Height
-                            };
-                            f.Balloons.Add(b);
-                        }
-                    p.Frames.Add(f);
-                }
-                c.Pages.Add(p);
-            }
 
             currentAppUser.Profile.Comixes.Add(c);
             db.SaveChanges();
@@ -239,7 +180,7 @@ namespace itransition_project.Controllers
                 CreationTime = comix.CreationTime,
                 Name = comix.Name,
                 Tags = new List<TagText>(),
-                Pages = new List<JsonPagesViewModel>()
+                Image = comix.Image
             };
 
             foreach (var tag in comix.Tags)
@@ -247,43 +188,6 @@ namespace itransition_project.Controllers
                 comixViewModel.Tags.Add(new TagText { text = tag.Text });
             }
 
-            foreach (var page in comix.Pages)
-            {
-                var p = new JsonPagesViewModel()
-                {
-                    Template = page.Template.Type,
-                    FrameImages = new List<JsonFrameImageViewModel>()
-                };
-
-                foreach (var frame in page.Frames)
-                {
-                    var f = new JsonFrameImageViewModel()
-                    {
-                        BackgroundImage = frame.BackgroundImage,
-                        Top = frame.Top,
-                        Left = frame.Left,
-                        Width = frame.Width,
-                        Height = frame.Height,
-                        Balloons = new List<JsonBalloonsViewModel>()
-                    };
-
-                    if (frame.Balloons != null)
-                        foreach (var balloon in frame.Balloons)
-                        {
-                            var b = new JsonBalloonsViewModel()
-                            {
-                                Text = balloon.Text,
-                                Top = balloon.Top,
-                                Left = balloon.Left,
-                                Width = balloon.Width,
-                                Height = balloon.Height
-                            };
-                            f.Balloons.Add(b);
-                        }
-                    p.FrameImages.Add(f);
-                }
-                comixViewModel.Pages.Add(p);
-            }
             return comixViewModel;
         }
 

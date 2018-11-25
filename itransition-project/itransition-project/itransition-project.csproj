@@ -290,6 +290,14 @@
     <Compile Include="Migrations\201605160921304_tags.Designer.cs">
       <DependentUpon>201605160921304_tags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811252011454_UpdateComixModel.cs" />
+    <Compile Include="Migrations\201811252011454_UpdateComixModel.Designer.cs">
+      <DependentUpon>201811252011454_UpdateComixModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811252137525_UpdateComixModelLatestVersion.cs" />
+    <Compile Include="Migrations\201811252137525_UpdateComixModelLatestVersion.Designer.cs">
+      <DependentUpon>201811252137525_UpdateComixModelLatestVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
@@ -1190,6 +1198,7 @@
     <Content Include="Views\Search\SearchByTag.cshtml" />
     <Content Include="Views\Home\_Comix.cshtml" />
     <Content Include="Views\Comix\NewComix.cshtml" />
+    <Content Include="Views\Shared\_AddComixLayout.cshtml" />
     <None Include="Views\Templates\Triad.cshtml" />
     <None Include="Views\Templates\Tetrad.cshtml" />
     <Content Include="Web.config" />
@@ -1280,6 +1289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605160921304_tags.resx">
       <DependentUpon>201605160921304_tags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811252011454_UpdateComixModel.resx">
+      <DependentUpon>201811252011454_UpdateComixModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811252137525_UpdateComixModelLatestVersion.resx">
+      <DependentUpon>201811252137525_UpdateComixModelLatestVersion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx" />
     <EmbeddedResource Include="Resources\Resource.resx">

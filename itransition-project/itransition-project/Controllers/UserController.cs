@@ -134,18 +134,7 @@ namespace itransition_project.Controllers
                 dbContext.Ratings.Remove(rating);
             }
             
-            foreach(var page in comix.Pages.ToList())
-            {
-                foreach(var frame in page.Frames.ToList())
-                {
-                    foreach(var balloon in frame.Balloons.ToList())
-                    {
-                        frame.Balloons.Remove(balloon);
-                    }
-                    page.Frames.Remove(frame);
-                }
-                comix.Pages.Remove(page);
-            }
+            
 
             comix.Author.Profile.Comixes.Remove(comix);
             dbContext.Comixes.Remove(comix);
