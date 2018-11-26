@@ -59,7 +59,7 @@ namespace itransition_project.Controllers
                         var a = new Image() { image = "" };
                         var q = binaryReader.ReadBytes(Request.Files[0].ContentLength);
                         var fileName = GetMimeType(file.FileName);
-                        a.image = "data:"+ fileName + ";base64," + Convert.ToBase64String(q);
+                        a.image = "data:" + fileName + ";base64," + Convert.ToBase64String(q);
                         var result = Json(a, JsonRequestBehavior.AllowGet);
                         result.ContentType = "text/html; charset=UTF-8";
                         return result;
@@ -135,21 +135,22 @@ namespace itransition_project.Controllers
             var tags = new List<string>();
 
             var tagSet = db.Tags.ToList();
-
-            if (comix.Tags.Count != 0)
-                foreach (var tag in comix.Tags)
-                {
-                    var currentTag = tagSet.FirstOrDefault(t => t.Text.Equals(tag));
-                    if (currentTag == null)
+            if (comix.Tags != null)
+            {
+                if (comix.Tags.Count != 0)
+                    foreach (var tag in comix.Tags)
                     {
-                        c.Tags.Add(new Tag { Text = tag });
+                        var currentTag = tagSet.FirstOrDefault(t => t.Text.Equals(tag));
+                        if (currentTag == null)
+                        {
+                            c.Tags.Add(new Tag { Text = tag });
+                        }
+                        else
+                        {
+                            c.Tags.Add(currentTag);
+                        }
                     }
-                    else
-                    {
-                        c.Tags.Add(currentTag);
-                    }
-                }
-
+            }
             currentAppUser.Profile.Comixes.Add(c);
             db.SaveChanges();
             LuceneEntryModel.AddUpdateLuceneIndex(currentAppUser.Profile.Comixes.Last());
