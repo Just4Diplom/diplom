@@ -1204,6 +1204,7 @@
     <Content Include="Views\Home\_Comix.cshtml" />
     <Content Include="Views\Comix\NewComix.cshtml" />
     <Content Include="Views\Shared\_AddComixLayout.cshtml" />
+    <Content Include="Views\Comix\ComixGeneratorView.cshtml" />
     <None Include="Views\Templates\Triad.cshtml" />
     <None Include="Views\Templates\Tetrad.cshtml" />
     <Content Include="Web.config" />

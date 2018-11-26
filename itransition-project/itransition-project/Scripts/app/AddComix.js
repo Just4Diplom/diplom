@@ -103,7 +103,19 @@ app.controller("pagesController", function ($scope, $http) {
     $scope.loadTags = function (query) {
         return $http.get("/Comix/GetTagsForAutocomplete/" + query);
     };
+    console.log("TAGS:");
+    console.log($(".ng-binding.ng-scope").map(function () { return $(this).text(); }).get());
+
     $scope.save = function () {
+        console.log("TAGS:");
+        var tags = [];
+        tags = $(".ng-binding.ng-scope").map(function () { return $(this).text(); }).get();
+        for (var i = tags.length - 1; i >= 0; i--) {
+            if (tags[i] === "×") {
+                tags.splice(i, 1);
+            }
+        }
+        console.log(tags);
         html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
 
             console.log(canvas);
@@ -115,7 +127,7 @@ app.controller("pagesController", function ($scope, $http) {
                 url: "/Comix/ReceiveComix",
                 data: { 
                     "image": image,
-                    "tags" : $scope.tags, 
+                    "tags": tags,
                     "name": $("#Name").val()
                 },
                 cache: false,
@@ -155,20 +167,6 @@ app.controller("pagesController", function ($scope, $http) {
 //        }
 //    }
 //});
-
-function getComix(scope) {
-    image = html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
-
-        console.log(canvas);
-        var a = canvas.toDataURL();
-        return "lol";
-    });
-return { 
-    "image": image,
-    "tags" : scope.tags, 
-    "name": $("#Name").val()
-};
-}
 function saveImageCanvas() {
     html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
 

@@ -139,10 +139,10 @@ namespace itransition_project.Controllers
             if (comix.Tags.Count != 0)
                 foreach (var tag in comix.Tags)
                 {
-                    var currentTag = tagSet.FirstOrDefault(t => t.Text.Equals(tag.text));
+                    var currentTag = tagSet.FirstOrDefault(t => t.Text.Equals(tag));
                     if (currentTag == null)
                     {
-                        c.Tags.Add(new Tag { Text = tag.text });
+                        c.Tags.Add(new Tag { Text = tag });
                     }
                     else
                     {
