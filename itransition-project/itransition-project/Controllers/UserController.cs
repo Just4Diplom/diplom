@@ -126,7 +126,7 @@ namespace itransition_project.Controllers
 
             foreach(var tag in comix.Tags.ToList())
             {
-                comix.Tags.Remove(tag);
+                dbContext.Tags.Remove(tag);
             }
 
             foreach(var rating in comix.Ratings.ToList())
