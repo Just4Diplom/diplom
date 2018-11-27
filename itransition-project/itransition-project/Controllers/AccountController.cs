@@ -155,7 +155,7 @@ namespace itransition_project.Controllers
                 user.Profile = new Profile()
                 {
                     Photo =
-                        "http://res.cloudinary.com/da40pd4iw/image/upload/v1460917537/%D0%9F%D0%B8%D0%B2%D0%BE_y9a59r.jpg"
+                        "https://www.ntconnections.net/wp-content/uploads/2018/06/incognito_mode_400.jpg"
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
