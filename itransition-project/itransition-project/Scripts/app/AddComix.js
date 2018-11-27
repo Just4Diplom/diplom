@@ -132,7 +132,10 @@ app.controller("pagesController", function ($scope, $http) {
                 },
                 cache: false,
                 complete: function (data) {
-                }
+                },
+                success: function (result) {
+                    window.location.href = result;
+                },
             });
 
         });

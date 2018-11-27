@@ -17,25 +17,58 @@ namespace itransition_project.Controllers
     public class ComixController : Controller
     {
 
-
-        public string faces_groups(string _)
+        public class FaceGroupModel
         {
-            return @"[{""id"":""5"",""title"":""Men(\u0427\u0443\u0432\u0430\u043a)""}]";
+            public string id { get; set; }
+            public string title { get; set; }
         }
 
-        public string faces(string gid, string _)
+
+
+        public class FaceModel
         {
-            return @"[{ ""file_name"":""nrIUH3r4.png"",""category_id"":""5""}]";
+            public string file_name { get; set; }
+            public string category_id { get; set; }
+        }
+
+        public JsonResult faces_groups(string _)
+        {
+            string path = HttpContext.Server.MapPath(@"/Content/StaticImages/");
+            string[] subfolders = System.IO.Directory.GetDirectories(path);
+            List<FaceGroupModel> faceGroupModels = new List<FaceGroupModel>();
+            for (int i = 0; i < subfolders.Length; i++)
+            {
+                subfolders[i] = subfolders[i].Split('\\').Last();
+                faceGroupModels.Add(new FaceGroupModel() { id = subfolders[i], title = subfolders[i]});
+            }
+            return Json(faceGroupModels, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public JsonResult faces(string gid, string _)
+        {
+            string path = Server.MapPath(@"/Content/StaticImages/"+ gid);
+            List<string> files = Directory.GetFiles(path, "*.png", SearchOption.AllDirectories).ToList();
+            List<FaceModel> faceModels = new List<FaceModel>();
+
+            for (int i = 0; i < files.Count; i++)
+            {
+                files[i] = files[i].Split('\\').Last();
+                faceModels.Add(new FaceModel() { file_name = files[i], category_id = gid });
+            }
+            return Json(faceModels, JsonRequestBehavior.AllowGet); ;
+            //return @"[{ ""file_name"":""nrIUH3r4.png"",""category_id"":""5""}]";
         }
 
         public ActionResult images(string img)
         {
             var dir = Server.MapPath(@"/Content/StaticImages/");
-            var path = Path.Combine(dir, @"nrIUH3r4.png");
-            var theFile = new FileInfo(path);
-            if (theFile.Exists)
+            var files = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories).ToList();
+            foreach (var file in files)
             {
-                return File(System.IO.File.ReadAllBytes(path), @"image/png");
+                if (file.Split('\\').Last() == img)
+                {
+                    return File(System.IO.File.ReadAllBytes(file), @"image/png");
+                }
             }
             return this.HttpNotFound();
         }

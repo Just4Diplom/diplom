@@ -331,7 +331,10 @@
     <Content Include="Content\loading_spinner.gif" />
     <Content Include="Content\ng-tags-input.bootstrap.css" />
     <Content Include="Content\ng-tags-input.css" />
-    <Content Include="Content\StaticImages\nrIUH3r4.png" />
+    <Content Include="Content\StaticImages\Men\Iqu8SOCW.png" />
+    <Content Include="Content\StaticImages\Men\nrIUH3r4.png" />
+    <Content Include="Content\StaticImages\Men\NT1xCRsk.png" />
+    <Content Include="Content\StaticImages\Troll\WpDYDBc6.png" />
     <Content Include="Content\TemplateStyles\skew_style.css" />
     <Content Include="Content\TemplateStyles\triad_style.css" />
     <Content Include="Content\TemplateStyles\tetrad_style.css" />
