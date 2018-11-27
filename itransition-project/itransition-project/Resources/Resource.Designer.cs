@@ -70,6 +70,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавить тег.
+        /// </summary>
+        public static string AddATag {
+            get {
+                return ResourceManager.GetString("AddATag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Комиксы.
+        /// </summary>
+        public static string Comixes {
+            get {
+                return ResourceManager.GetString("Comixes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Комменты.
         /// </summary>
         public static string Comments {
@@ -151,6 +169,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Имя.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фото.
+        /// </summary>
+        public static string Photo {
+            get {
+                return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Профиль.
         /// </summary>
         public static string Profile {
@@ -174,6 +210,15 @@ namespace Resources {
         public static string Refresh {
             get {
                 return ResourceManager.GetString("Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сохранить.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
     }

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace itransition_project.Controllers
 {
+    [Culture]
     public class UserController : Controller
     {
         public static string UserPageId;

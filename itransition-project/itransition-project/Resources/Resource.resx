@@ -120,6 +120,12 @@
   <data name="Add" xml:space="preserve">
     <value>Добавить</value>
   </data>
+  <data name="AddATag" xml:space="preserve">
+    <value>Добавить тег</value>
+  </data>
+  <data name="Comixes" xml:space="preserve">
+    <value>Комиксы</value>
+  </data>
   <data name="Comments" xml:space="preserve">
     <value>Комменты</value>
   </data>
@@ -147,6 +153,12 @@
   <data name="Medal" xml:space="preserve">
     <value>Медали</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>
   </data>
@@ -155,5 +167,8 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Обновить</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
 </root>

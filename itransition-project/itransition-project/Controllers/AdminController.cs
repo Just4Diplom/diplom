@@ -8,10 +8,11 @@ using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using itransition_project.Filters;
 
 namespace itransition_project.Controllers
 {
-
+    [Culture]
     public class AdminController : Controller
     {
         const int pageSize = 12;

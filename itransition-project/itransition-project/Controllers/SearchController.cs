@@ -7,9 +7,11 @@ using System.Web.UI.WebControls;
 using itransition_project.Lucene;
 using Lucene.Net.Search;
 using itransition_project.Models;
+using itransition_project.Filters;
 
 namespace itransition_project.Controllers
 {
+    [Culture]
     public class SearchController: Controller
     {
         public ActionResult Index(string id)

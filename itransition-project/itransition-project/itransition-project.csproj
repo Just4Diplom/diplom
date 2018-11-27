@@ -235,7 +235,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ComixController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\StaticController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />
     <Compile Include="Global.asax.cs">

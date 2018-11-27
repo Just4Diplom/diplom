@@ -11,9 +11,11 @@ using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using itransition_project.Lucene;
 using System.IO;
+using itransition_project.Filters;
 
 namespace itransition_project.Controllers
 {
+    [Culture]
     public class ComixController : Controller
     {
 

@@ -9,10 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using itransition_project.Models;
+using itransition_project.Filters;
 
 namespace itransition_project.Controllers
 {
     [Authorize]
+    [Culture]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

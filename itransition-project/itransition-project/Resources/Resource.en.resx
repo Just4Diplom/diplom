@@ -120,6 +120,12 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AddATag" xml:space="preserve">
+    <value>Add a tag</value>
+  </data>
+  <data name="Comixes" xml:space="preserve">
+    <value>Comixes</value>
+  </data>
   <data name="Comments" xml:space="preserve">
     <value>Comments</value>
   </data>
@@ -147,6 +153,12 @@
   <data name="Medal" xml:space="preserve">
     <value>Medals</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
@@ -155,5 +167,8 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Refresh</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>
