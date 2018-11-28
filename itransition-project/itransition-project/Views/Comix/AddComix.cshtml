@@ -1,7 +1,7 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_AddComixLayout.cshtml";
-   // Layout = null;
+    // Layout = null;
 }
 <br />
 <div class="container" ng-app="ComixAdd">
@@ -23,6 +23,7 @@
         <div class="row">
             <div class="controls col-md-6">
                 <button ng-click="save()" class="btn btn-default btn-sm">@Resources.Resource.Save</button>
+                <button onclick="AddPage()" class="btn btn-default btn-sm">Сохранить страницу и добавить новую</button>
             </div>
         </div>
         <hr />
@@ -189,9 +190,6 @@
                 </div>
             </div>
         </div>
-        <div style="margin:20px 0 30px; text-align: center;">
-            <a id="save_image_locally" onclick="save()" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Опубликовать</a>
-        </div>
     </div>
 </div>
 @section scripts{
@@ -203,6 +201,7 @@
 
 
 <script>
+
     function save() {
         document.getElementById("save_image_locally").addEventListener("click", function () {
 
@@ -222,6 +221,14 @@
                 });
 
             });
+        });
+    }
+
+    function AddPage() {
+        html2canvas(document.querySelector("#canvas-droppable")).then(canvas => {
+            var image = canvas.toDataURL();
+            $('#pages').append('<div id="page"><button id="deletePage" onClick="$(this).parent().remove();" class="btn btn-default btn-sm">Удалить страницу</button><img id="theImg" style="display:block; margin:auto" src="' + image + '" /></div>')
+            //document.body.appendChild(canvas)
         });
     }
 

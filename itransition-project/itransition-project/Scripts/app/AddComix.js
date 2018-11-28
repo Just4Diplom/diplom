@@ -107,6 +107,13 @@ app.controller("pagesController", function ($scope, $http) {
     console.log($(".ng-binding.ng-scope").map(function () { return $(this).text(); }).get());
 
     $scope.save = function () {
+        var images = document.querySelectorAll('[id=theImg]');
+        var srcList = [];
+        for (var i = 0; i < images.length; i++) {
+            srcList.push(images[i].src);
+        }
+        console.log("srcList:");
+        console.log(srcList);
         console.log("TAGS:");
         var tags = [];
         tags = $(".ng-binding.ng-scope").map(function () { return $(this).text(); }).get();
@@ -116,17 +123,13 @@ app.controller("pagesController", function ($scope, $http) {
             }
         }
         console.log(tags);
-        html2canvas(document.querySelector('#canvas-droppable')).then(function (canvas) {
-
-            console.log(canvas);
-            var image = canvas.toDataURL();
             $.ajax({
                 type: "POST",
                 traditional: true,
                 dataType: "json",
                 url: "/Comix/ReceiveComix",
                 data: { 
-                    "image": image,
+                    "images": srcList,
                     "tags": tags,
                     "name": $("#Name").val()
                 },
@@ -137,8 +140,6 @@ app.controller("pagesController", function ($scope, $http) {
                     window.location.href = result;
                 },
             });
-
-        });
         //var comix = $http.post('/Comix/ReceiveComix', getComix($scope));
         //comix.success(function(data, status, headers, config) {
         //    window.location.href = data;

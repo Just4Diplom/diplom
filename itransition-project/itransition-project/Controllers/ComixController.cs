@@ -41,14 +41,14 @@ namespace itransition_project.Controllers
             for (int i = 0; i < subfolders.Length; i++)
             {
                 subfolders[i] = subfolders[i].Split('\\').Last();
-                faceGroupModels.Add(new FaceGroupModel() { id = subfolders[i], title = subfolders[i]});
+                faceGroupModels.Add(new FaceGroupModel() { id = subfolders[i], title = subfolders[i] });
             }
             return Json(faceGroupModels, JsonRequestBehavior.AllowGet); ;
         }
 
         public JsonResult faces(string gid, string _)
         {
-            string path = Server.MapPath(@"/Content/StaticImages/"+ gid);
+            string path = Server.MapPath(@"/Content/StaticImages/" + gid);
             List<string> files = Directory.GetFiles(path, "*.png", SearchOption.AllDirectories).ToList();
             List<FaceModel> faceModels = new List<FaceModel>();
 
@@ -163,11 +163,16 @@ namespace itransition_project.Controllers
                 Author = currentAppUser,
                 CreationTime = DateTime.Now,
                 Name = comix.Name,
-                Image = comix.Image,
+                Pages = new List<Page>(),
                 Tags = new List<Tag>()
             };
 
             var tags = new List<string>();
+
+            foreach (var comixImage in comix.Images)
+            {
+                c.Pages.Add(new Page() { Image = comixImage });
+            }
 
             var tagSet = db.Tags.ToList();
             if (comix.Tags != null)
@@ -216,9 +221,12 @@ namespace itransition_project.Controllers
                 CreationTime = comix.CreationTime,
                 Name = comix.Name,
                 Tags = new List<TagText>(),
-                Image = comix.Image
+                Pages = new List<Page>()
             };
-
+            foreach (var comixPage in comix.Pages)
+            {
+                comixViewModel.Pages.Add(new Page { Image = comixPage.Image });
+            }
             foreach (var tag in comix.Tags)
             {
                 comixViewModel.Tags.Add(new TagText { text = tag.Text });

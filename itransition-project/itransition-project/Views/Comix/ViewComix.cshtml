@@ -12,7 +12,7 @@
         @Html.ActionLink(tag.text, "SearchByTag", "Search", new { id = tag.text }, new { @class = "label label-primary" })
     }
 </div>
-<br/>
+<br />
 <div class="row" ng-app="Like">
     <div ng-controller="LikeController" ng-init="setId(@Model.Id)">
         <div style="max-width: 150px" class="input-group">
@@ -35,9 +35,14 @@
 <div class="container">
     <div id="comix">
         <br />
-        <img style="display:block; margin:auto" src="@Model.Image"/>
+
+        @foreach (var page in Model.Pages)
+        {
+            <img style="display:block; margin:auto" src="@page.Image" />
+            <br />
+        }
     </div>
 </div>
 @section scripts{
-                @Scripts.Render("~/bundles/LikeAndDislike")
-    }
+    @Scripts.Render("~/bundles/LikeAndDislike")
+}

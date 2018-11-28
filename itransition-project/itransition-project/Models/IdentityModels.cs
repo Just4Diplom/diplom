@@ -60,5 +60,6 @@ namespace itransition_project.Models
         public DbSet<Template> Templates { get; set; }
         public DbSet<Balloon> Balloons { get; set; }
         public DbSet<BalloonType> BallonTypes { get; set; }
+        public DbSet<Page> Pages { get; set; }
     }
 }
