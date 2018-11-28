@@ -124,8 +124,12 @@ namespace itransition_project.Controllers
         {
             var dbContext = new ApplicationDbContext();
             Comix comix = dbContext.Comixes.First(x => x.Id == data);
+            foreach (var page in comix.Pages.ToList())
+            {
+                dbContext.Pages.Remove(page);
+            }
 
-            foreach(var tag in comix.Tags.ToList())
+            foreach (var tag in comix.Tags.ToList())
             {
                 dbContext.Tags.Remove(tag);
             }
@@ -134,9 +138,6 @@ namespace itransition_project.Controllers
             {
                 dbContext.Ratings.Remove(rating);
             }
-            
-            
-
             comix.Author.Profile.Comixes.Remove(comix);
             dbContext.Comixes.Remove(comix);
             dbContext.SaveChanges();

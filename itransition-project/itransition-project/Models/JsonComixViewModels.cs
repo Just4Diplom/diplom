@@ -14,13 +14,14 @@ namespace itransition_project.Models
         public string Name { get; set; }
         public string Image { get; set; }
         public List<TagText> Tags { get; set; }
+        public List<Page> Pages { get; set; }
     }
 
     [Serializable]
     public class JsonComixViewModel
     {
         public string Name { get; set; }
-        public string Image { get; set; }
+        public List<string> Images { get; set; }
         public List<string> Tags { get; set; }
     }
 

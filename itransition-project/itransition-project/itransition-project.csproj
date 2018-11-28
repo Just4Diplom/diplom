@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201811252137525_UpdateComixModelLatestVersion.Designer.cs">
       <DependentUpon>201811252137525_UpdateComixModelLatestVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811281159339_AddPagesToComix.cs" />
+    <Compile Include="Migrations\201811281159339_AddPagesToComix.Designer.cs">
+      <DependentUpon>201811281159339_AddPagesToComix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
@@ -1303,6 +1307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811252137525_UpdateComixModelLatestVersion.resx">
       <DependentUpon>201811252137525_UpdateComixModelLatestVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281159339_AddPagesToComix.resx">
+      <DependentUpon>201811281159339_AddPagesToComix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -45,7 +45,7 @@ namespace itransition_project.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime CreationTime { get; set; }
-        public string Image { get; set; }
+        public virtual ICollection<Page> Pages { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual int RatingValue { get; set; }
@@ -56,8 +56,7 @@ namespace itransition_project.Models
     public class Page
     {
         public int Id { get; set; }
-        public virtual Template Template { get; set; }
-        public virtual ICollection<Frame> Frames { get; set; }
+        public string Image { get; set; }
     }
 
     public class Frame
