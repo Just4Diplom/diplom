@@ -79,6 +79,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Изменить настройки вашего аккаунта.
+        /// </summary>
+        public static string ChangeAccountSettings {
+            get {
+                return ResourceManager.GetString("ChangeAccountSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изменить пароль.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Комиксы.
         /// </summary>
         public static string Comixes {
@@ -120,6 +138,15 @@ namespace Resources {
         public static string EditDetails {
             get {
                 return ResourceManager.GetString("EditDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Внешние логины.
+        /// </summary>
+        public static string ExternalLogins {
+            get {
+                return ResourceManager.GetString("ExternalLogins", resourceCulture);
             }
         }
         
@@ -219,6 +246,42 @@ namespace Resources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Двух факторная аунтификация.
+        /// </summary>
+        public static string TwoFactorAuthentication {
+            get {
+                return ResourceManager.GetString("TwoFactorAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нет двухфакторных поставщиков проверки подлинности. Подробнее.
+        /// </summary>
+        public static string TwoFactorAuthenticationText {
+            get {
+                return ResourceManager.GetString("TwoFactorAuthenticationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to в этой статье.
+        /// </summary>
+        public static string TwoFactorAuthenticationTextPart2 {
+            get {
+                return ResourceManager.GetString("TwoFactorAuthenticationTextPart2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to об установке этого приложения ASP.NET для поддержки двухфакторной аутентификации.
+        /// </summary>
+        public static string TwoFactorAuthenticationTextPart3 {
+            get {
+                return ResourceManager.GetString("TwoFactorAuthenticationTextPart3", resourceCulture);
             }
         }
     }

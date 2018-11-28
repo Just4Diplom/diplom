@@ -123,6 +123,12 @@
   <data name="AddATag" xml:space="preserve">
     <value>Add a tag</value>
   </data>
+  <data name="ChangeAccountSettings" xml:space="preserve">
+    <value>Change your account settings</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change a password</value>
+  </data>
   <data name="Comixes" xml:space="preserve">
     <value>Comixes</value>
   </data>
@@ -137,6 +143,9 @@
   </data>
   <data name="EditDetails" xml:space="preserve">
     <value>Edit Details</value>
+  </data>
+  <data name="ExternalLogins" xml:space="preserve">
+    <value>External Logins</value>
   </data>
   <data name="Hello" xml:space="preserve">
     <value>Hello</value>
@@ -170,5 +179,18 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="TwoFactorAuthentication" xml:space="preserve">
+    <value>Two-Factor Authentication</value>
+  </data>
+  <data name="TwoFactorAuthenticationTextPart1" xml:space="preserve">
+    <value>There are no two-factor authentication providers configured. See 
+</value>
+  </data>
+  <data name="TwoFactorAuthenticationTextPart2" xml:space="preserve">
+    <value>this article </value>
+  </data>
+  <data name="TwoFactorAuthenticationTextPart3" xml:space="preserve">
+    <value>for details on setting up this ASP.NET application to support two-factor authentication.</value>
   </data>
 </root>

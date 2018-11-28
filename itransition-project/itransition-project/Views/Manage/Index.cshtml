@@ -1,13 +1,13 @@
 ﻿@model itransition_project.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = Resources.Resource.Manage;
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>@Resources.Resource.ChangeAccountSettings</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
@@ -15,18 +15,18 @@
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink(@Resources.Resource.ChangePassword, "ChangePassword")
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink(@Resources.Resource.Create, "SetPassword")
             }
             ]
         </dd>
-        <dt>External Logins:</dt>
+        <dt>@Resources.Resource.ExternalLogins:</dt>
         <dd>
             @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
+            @Html.ActionLink(@Resources.Resource.Manage, "ManageLogins") ]
         </dd>
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -56,11 +56,11 @@
                 }
             </dd>
         *@
-        <dt>Two-Factor Authentication:</dt>
+        <dt>@Resources.Resource.TwoFactorAuthentication:</dt>
         <dd>
             <p>
-                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
+                @Resources.Resource.TwoFactorAuthenticationText <a href="http://go.microsoft.com/fwlink/?LinkId=403804">@Resources.Resource.TwoFactorAuthenticationTextPart2</a>
+                @Resources.Resource.TwoFactorAuthenticationTextPart3
             </p>
             @*@if (Model.TwoFactor)
                 {
