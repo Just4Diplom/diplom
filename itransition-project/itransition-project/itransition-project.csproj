@@ -330,6 +330,26 @@
     <Content Include="Content\bootstrap-flatly.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Comix\bootstrap.min.css" />
+    <Content Include="Content\Comix\font-awesome.min.css" />
+    <Content Include="Content\Comix\fonts_cnt.css" />
+    <Content Include="Content\Comix\Images\dock-left.png" />
+    <Content Include="Content\Comix\Images\dock-middle.png" />
+    <Content Include="Content\Comix\Images\dock-right.png" />
+    <Content Include="Content\Comix\Images\glyphicons-halflings-white.png" />
+    <Content Include="Content\Comix\Images\glyphicons-halflings.png" />
+    <Content Include="Content\Comix\Images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="Content\Comix\Images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Comix\jquery-ui-1.8.17.custom.css" />
+    <Content Include="Content\Comix\lite.css" />
+    <Content Include="Content\Comix\notifier.css" />
+    <Content Include="Content\Comix\page.css" />
+    <Content Include="Content\Comix\post.css" />
+    <Content Include="Content\Comix\ragemaker.css" />
+    <Content Include="Content\Comix\style.css" />
+    <Content Include="Content\Comix\ui_common.css" />
+    <Content Include="Content\Comix\ui_media_selector.css" />
+    <Content Include="Content\Comix\widget_comments.css" />
     <Content Include="Content\DragAndDrop.css" />
     <Content Include="Content\loading_spinner.gif" />
     <Content Include="Content\ng-tags-input.bootstrap.css" />
@@ -421,8 +441,32 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Comix\aes_light.js" />
+    <Content Include="Scripts\Comix\ajaxfileupload.js" />
+    <Content Include="Scripts\Comix\analytics.js" />
+    <Content Include="Scripts\Comix\audioplayer.js" />
+    <Content Include="Scripts\Comix\code.js" />
+    <Content Include="Scripts\Comix\comments.js" />
+    <Content Include="Scripts\Comix\emoji.js" />
+    <Content Include="Scripts\Comix\farbtastic.js" />
+    <Content Include="Scripts\Comix\funposts.js" />
     <Content Include="Scripts\Comix\html2canvas.js" />
+    <Content Include="Scripts\Comix\jquery.js" />
+    <Content Include="Scripts\Comix\jquery.ui-1.8.17.js" />
+    <Content Include="Scripts\Comix\lang3_0.js" />
+    <Content Include="Scripts\Comix\likes.js" />
+    <Content Include="Scripts\Comix\lite.js" />
+    <Content Include="Scripts\Comix\loader_nav9053428965461_3.js" />
+    <Content Include="Scripts\Comix\mem.js" />
+    <Content Include="Scripts\Comix\openapi.js" />
+    <Content Include="Scripts\Comix\page.js" />
     <Content Include="Scripts\Comix\ragemaker.js" />
+    <Content Include="Scripts\Comix\rotate.js" />
+    <Content Include="Scripts\Comix\shortcut.js" />
+    <Content Include="Scripts\Comix\taexpander.js" />
+    <Content Include="Scripts\Comix\ui_common.js" />
+    <Content Include="Scripts\Comix\ui_media_selector.js" />
+    <Content Include="Scripts\Comix\xdm.js" />
     <Content Include="Scripts\DragAndDrop.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1255,7 +1299,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Comix\" />
     <Folder Include="LuceneEntryIndex\" />
   </ItemGroup>
   <ItemGroup>
