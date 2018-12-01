@@ -338,14 +338,14 @@
     <Content Include="Content\Comix\Images\dock-right.png" />
     <Content Include="Content\Comix\Images\glyphicons-halflings-white.png" />
     <Content Include="Content\Comix\Images\glyphicons-halflings.png" />
-    <Content Include="Content\Comix\Images\marker.png" />
-    <Content Include="Content\Comix\Images\mask.png" />
+    <Content Include="Content\Comix\marker.png" />
+    <Content Include="Content\Comix\mask.png" />
     <Content Include="Content\Comix\Images\ui-bg_glass_75_dadada_1x400.png" />
     <Content Include="Content\Comix\Images\ui-bg_glass_75_e6e6e6_1x400.png" />
     <Content Include="Content\Comix\Images\ui-bg_glass_75_ffffff_1x400.png" />
     <Content Include="Content\Comix\Images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
     <Content Include="Content\Comix\Images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\Comix\Images\wheel.png" />
+    <Content Include="Content\Comix\wheel.png" />
     <Content Include="Content\Comix\jquery-ui-1.8.17.custom.css" />
     <Content Include="Content\Comix\lite.css" />
     <Content Include="Content\Comix\notifier.css" />
