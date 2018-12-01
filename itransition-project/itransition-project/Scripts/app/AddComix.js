@@ -64,7 +64,7 @@ app.directive('fileDropzone', function () {
                         });
                     }
                 };
-                try{
+                try {
                     file = event.dataTransfer.files[0];
 
                     name = file.name;
@@ -108,6 +108,18 @@ app.controller("pagesController", function ($scope, $http) {
 
     $scope.save = function () {
         var images = document.querySelectorAll('[id=theImg]');
+        if ($('#Name').val() == "") {
+            alert("Вы не заполнили название комикса");
+            return;
+        }
+        if ($(".ng-binding.ng-scope").map(function () { return $(this).text(); }).get().length == 0) {
+            alert("Вы не заполнили теги комикса");
+            return;
+        }
+        if (images.length == 0) {
+            alert("Вы не добавили не одной страница комикса");
+            return;
+        }
         var srcList = [];
         for (var i = 0; i < images.length; i++) {
             srcList.push(images[i].src);
@@ -123,23 +135,23 @@ app.controller("pagesController", function ($scope, $http) {
             }
         }
         console.log(tags);
-            $.ajax({
-                type: "POST",
-                traditional: true,
-                dataType: "json",
-                url: "/Comix/ReceiveComix",
-                data: { 
-                    "images": srcList,
-                    "tags": tags,
-                    "name": $("#Name").val()
-                },
-                cache: false,
-                complete: function (data) {
-                },
-                success: function (result) {
-                    window.location.href = result;
-                },
-            });
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            dataType: "json",
+            url: "/Comix/ReceiveComix",
+            data: {
+                "images": srcList,
+                "tags": tags,
+                "name": $("#Name").val()
+            },
+            cache: false,
+            complete: function (data) {
+            },
+            success: function (result) {
+                window.location.href = result;
+            },
+        });
         //var comix = $http.post('/Comix/ReceiveComix', getComix($scope));
         //comix.success(function(data, status, headers, config) {
         //    window.location.href = data;
@@ -261,7 +273,7 @@ function make_it_draggable() {
 
             clone.attr("class", "talkbubble");
             clone.find(".ui-resizable-handle").remove();
-                
+
             clone.css("top", ui.offset.top - $(this).offset().top);
             clone.css("left", ui.offset.left - $(this).offset().left);
             clone.css("position", "absolute");

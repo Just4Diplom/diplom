@@ -19,13 +19,13 @@
         <p>
             <select class="form-control" name="Theme" id="Theme">
                 <option>Dark</option>
-                <option>Light</option>
+                <option @(@Model.User.Profile.User.Theme == "Light" ? new HtmlString("selected=\"selected\""): new HtmlString(""))>Light</option>
             </select>
         </p>
         <p>
             <select class="form-control" name="Lang" id="Lang">
                 <option>en</option>
-                <option>ru</option>
+                <option @(@Model.User.Profile.User.Language == "ru" ? new HtmlString("selected=\"selected\""): new HtmlString(""))>ru</option>
             </select>
         </p>
         <p><button onclick="refreshInfo()" type="button" class="btn btn-primary">@Resources.Resource.Refresh</button></p>
